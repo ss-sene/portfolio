@@ -13,6 +13,13 @@ export function Contact() {
         <AnimateOnScroll>
           {/* Centered block */}
           <div className="text-center max-w-3xl mx-auto">
+            <div className="inline-flex items-center gap-2 mb-8">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+              <span className="text-[10px] font-semibold uppercase tracking-widest text-accent">
+                Disponible immédiatement
+              </span>
+            </div>
+
             <h2
               id="contact-heading"
               className="font-condensed font-bold text-ink uppercase leading-[0.88]"
@@ -26,7 +33,7 @@ export function Contact() {
             </h2>
 
             <p className="mt-8 text-[11px] font-semibold uppercase tracking-[0.12em] text-ink/50 leading-[1.9] max-w-lg mx-auto">
-              Je suis ouvert aux opportunités en CDI et aux missions freelance
+              Disponible immédiatement pour un CDI ou une mission freelance
               autour du développement backend PHP/Symfony, des API REST, de la
               qualité logicielle et de l&rsquo;optimisation applicative.
             </p>
@@ -46,11 +53,6 @@ export function Contact() {
           >
             {[
               { label: "Email", value: site.email, href: `mailto:${site.email}` },
-              {
-                label: "Téléphone",
-                value: site.phone,
-                href: `tel:${site.phone.replace(/\s/g, "")}`,
-              },
               { label: "LinkedIn", value: "Voir le profil", href: site.linkedin, external: true },
               { label: "GitHub", value: "Voir le profil", href: site.github, external: true },
               { label: "Localisation", value: site.location, href: undefined },

@@ -35,6 +35,15 @@ export function Hero() {
             <Button href="#contact" variant="outline">
               Me contacter
             </Button>
+            <Button
+              href="/cv/cv-serigne-saliou-sene.pdf"
+              variant="outline"
+              target="_blank"
+              rel="noopener noreferrer"
+              download
+            >
+              Télécharger le CV &darr;
+            </Button>
           </div>
         </div>
 

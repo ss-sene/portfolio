@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { profile } from "@/content/profile";
 import { Button } from "@/components/ui/Button";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
@@ -22,10 +23,7 @@ export function About() {
                 className="mt-5 font-condensed font-bold text-ink uppercase leading-[0.88]"
                 style={{ fontSize: "clamp(2.5rem, 6vw, 5.5rem)" }}
               >
-                {profile.about.heading
-                  .split(" ")
-                  .slice(0, 2)
-                  .join(" ")}
+                {profile.about.heading.split(" ").slice(0, 2).join(" ")}
                 <br />
                 <span className="text-ink/25">
                   {profile.about.heading.split(" ").slice(2).join(" ")}
@@ -35,37 +33,33 @@ export function About() {
                 {profile.about.body}
               </p>
               <div className="mt-10">
-                <Button href="/cv/cv-serigne-saliou-sene.pdf" variant="outline">
+                <Button
+                  href="/cv/cv-serigne-saliou-sene.pdf"
+                  variant="outline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download
+                >
                   Télécharger mon CV &darr;
                 </Button>
               </div>
             </div>
           </AnimateOnScroll>
 
-          {/* Geometric visual placeholder */}
+          {/* Photo */}
           <AnimateOnScroll delay={150}>
-            <div
-              className="hidden lg:flex items-center justify-center"
-              aria-hidden="true"
-            >
+            <div className="flex items-center justify-center">
               <div className="relative">
-                {/* Main circle */}
-                <div
-                  className="w-72 h-72 rounded-full bg-rule/60 flex items-center justify-center"
-                >
-                  <div className="text-center select-none">
-                    <p
-                      className="font-condensed font-bold text-ink/15 leading-none uppercase"
-                      style={{ fontSize: "5.5rem" }}
-                    >
-                      SSS
-                    </p>
-                    <p className="mt-3 text-[9px] font-semibold uppercase tracking-[0.3em] text-ink/30">
-                      Serigne Saliou
-                      <br />
-                      SENE
-                    </p>
-                  </div>
+                {/* Cercle photo */}
+                <div className="w-48 h-48 lg:w-72 lg:h-72 rounded-full overflow-hidden ring-1 ring-rule">
+                  <Image
+                    src="/images/serigne-saliou-sene.png"
+                    alt="Serigne Saliou SENE — Développeur Backend PHP/Symfony"
+                    width={290}
+                    height={290}
+                    className="w-full h-full object-cover object-top"
+                    priority
+                  />
                 </div>
 
                 {/* Badge overlay */}

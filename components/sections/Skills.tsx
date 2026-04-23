@@ -90,7 +90,7 @@ export function Skills() {
         </div>
 
         {/* Cards */}
-        <div className="grid sm:grid-cols-3 gap-5">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {skillCards.map((card, i) => {
             const Icon = icons[i];
             return (

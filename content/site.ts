@@ -8,8 +8,8 @@ export const site = {
   email: "serignesaliou.sene@outlook.fr",
   phone: "+33 6 16 26 72 92",
   location: "Sarcelles / Île-de-France",
-  github: "https://github.com/",
-  linkedin: "https://linkedin.com/in/",
+  github: "https://github.com/ss-sene",
+  linkedin: "https://www.linkedin.com/in/serignesaliousene",
   keywords: [
     "développeur backend",
     "PHP",
