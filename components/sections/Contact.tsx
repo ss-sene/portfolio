@@ -48,9 +48,8 @@ export function Contact() {
 
         {/* Contact details row */}
         <AnimateOnScroll delay={150}>
-          <address
-            className="not-italic mt-16 pt-10 border-t border-rule flex flex-wrap justify-center gap-x-10 gap-y-4"
-          >
+          <address className="not-italic mt-16 pt-10 border-t border-rule">
+            <dl className="flex flex-wrap justify-center gap-x-10 gap-y-4">
             {[
               { label: "Email", value: site.email, href: `mailto:${site.email}` },
               { label: "LinkedIn", value: "Voir le profil", href: site.linkedin, external: true },
@@ -78,6 +77,7 @@ export function Contact() {
                 </dd>
               </div>
             ))}
+            </dl>
           </address>
         </AnimateOnScroll>
       </div>

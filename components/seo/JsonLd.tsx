@@ -1,15 +1,16 @@
 import { site } from "@/content/site";
 
-// JSON.stringify ne protège pas contre </script> ni les séparateurs de ligne Unicode.
-// On escape les caractères dangereux avec leurs équivalents Unicode valides en JSON.
 function safeJsonStringify(value: unknown): string {
   return JSON.stringify(value)
     .replace(/</g, "\\u003c")
     .replace(/>/g, "\\u003e")
     .replace(/&/g, "\\u0026")
-    .replace(new RegExp(" ", "g"), "\\u2028")
-    .replace(new RegExp(" ", "g"), "\\u2029");
+    .replace(new RegExp("\u2028", "g"), "\\u2028")
+    .replace(new RegExp("\u2029", "g"), "\\u2029");
 }
+
+// Update this date whenever you make meaningful content changes.
+const SITE_LAST_MODIFIED = "2026-06-03";
 
 export function JsonLd() {
   const base = site.url;
@@ -24,6 +25,8 @@ export function JsonLd() {
         name: `${site.name} — ${site.title}`,
         description: site.description,
         inLanguage: "fr-FR",
+        dateCreated: "2024-01-01",
+        dateModified: SITE_LAST_MODIFIED,
         isPartOf: { "@id": `${base}/#website` },
         mainEntity: { "@id": `${base}/#person` },
       },
@@ -44,6 +47,13 @@ export function JsonLd() {
         url: `${base}/`,
         email: site.email,
         telephone: site.phone,
+        image: {
+          "@type": "ImageObject",
+          url: `${base}/images/serigne-saliou-sene.webp`,
+          width: 580,
+          height: 580,
+          caption: `${site.name} — ${site.title}`,
+        },
         address: {
           "@type": "PostalAddress",
           addressLocality: "Sarcelles",
@@ -72,13 +82,11 @@ export function JsonLd() {
         hasOccupation: {
           "@type": "Occupation",
           name: site.title,
-          occupationLocation: { "@type": "City", name: "Île-de-France" },
+          occupationLocation: {
+            "@type": "AdministrativeArea",
+            name: "Île-de-France",
+          },
           skills: "PHP 8, Symfony, API REST, MySQL, Docker, GitLab CI/CD",
-        },
-        worksFor: {
-          "@type": "Organization",
-          name: "Link Mobility",
-          url: "https://www.linkmobility.com",
         },
         alumniOf: [
           {

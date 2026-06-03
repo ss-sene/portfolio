@@ -8,6 +8,7 @@ const navLinks = [
   { href: "#experience", label: "Expérience" },
   { href: "#a-propos", label: "À propos" },
   { href: "#competences", label: "Compétences" },
+  { href: "/blog", label: "Blog" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -18,9 +19,9 @@ export function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-canvas/90 backdrop-blur-sm">
       <div className="mx-auto max-w-350 px-8 lg:px-14 h-16 flex items-center justify-between">
         <a
-          href="#"
+          href="/"
           className="text-sm font-bold tracking-widest text-ink uppercase hover:text-accent transition-colors"
-          aria-label="Retour en haut de page"
+          aria-label="Retour à l'accueil"
         >
           SSS.
         </a>
@@ -92,7 +93,7 @@ export function Header() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-[11px] font-semibold uppercase tracking-widest text-ink/60 hover:text-ink transition-colors"
+                className="text-[11px] font-semibold uppercase tracking-widest text-ink/60 hover:text-ink transition-colors py-2"
                 onClick={() => setOpen(false)}
               >
                 {link.label}

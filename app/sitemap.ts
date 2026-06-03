@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     ...base,
+    { url: `${site.url}/blog`, lastModified: SITE_LAST_MODIFIED },
     ...blogPosts.map((post) => ({
       url: `${site.url}/blog/${post.slug}`,
       lastModified: SITE_LAST_MODIFIED,

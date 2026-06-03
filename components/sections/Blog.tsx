@@ -2,10 +2,14 @@ import { blogPosts } from "@/content/blog";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
+const RECENT_COUNT = 3;
+
 export function Blog() {
+  const recent = blogPosts.slice(0, RECENT_COUNT);
+
   return (
     <section
-      id="articles"
+      id="blog"
       className="py-24 lg:py-32 bg-paper"
       aria-labelledby="blog-heading"
     >
@@ -24,7 +28,7 @@ export function Blog() {
             </h2>
           </div>
           <a
-            href="/articles"
+            href="/blog"
             className="hidden sm:inline-flex text-sm font-semibold text-ink hover:text-accent transition-colors shrink-0"
           >
             Tous les articles &rarr;
@@ -32,7 +36,7 @@ export function Blog() {
         </div>
 
         <div className="divide-y divide-rule">
-          {blogPosts.map((post) => (
+          {recent.map((post) => (
             <article
               key={post.slug}
               className="py-8 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6"
@@ -49,7 +53,12 @@ export function Blog() {
                   ))}
                 </div>
                 <h3 className="font-condensed font-bold text-ink text-2xl leading-tight">
-                  {post.title}
+                  <a
+                    href={`/blog/${post.slug}`}
+                    className="hover:text-accent transition-colors"
+                  >
+                    {post.title}
+                  </a>
                 </h3>
                 <p className="mt-2 text-sm text-muted leading-relaxed max-w-2xl">
                   {post.excerpt}
@@ -59,6 +68,12 @@ export function Blog() {
               <div className="sm:text-right shrink-0 sm:min-w-[120px]">
                 <p className="text-xs text-muted">{post.date}</p>
                 <p className="mt-1 text-xs text-muted">{post.readingTime} de lecture</p>
+                <a
+                  href={`/blog/${post.slug}`}
+                  className="mt-2 inline-block text-xs font-semibold text-ink/40 hover:text-accent transition-colors uppercase tracking-widest"
+                >
+                  Lire &rarr;
+                </a>
               </div>
             </article>
           ))}
@@ -66,7 +81,7 @@ export function Blog() {
 
         <div className="mt-10 sm:hidden">
           <a
-            href="/articles"
+            href="/blog"
             className="text-sm font-semibold text-ink hover:text-accent transition-colors"
           >
             Tous les articles &rarr;

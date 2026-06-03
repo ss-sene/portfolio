@@ -1,5 +1,5 @@
 export const features = {
-  blog: false,
+  blog: true,
 } as const;
 
 export type Features = typeof features;
