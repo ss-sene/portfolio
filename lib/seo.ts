@@ -2,9 +2,14 @@ import type { Metadata } from "next";
 import { site } from "@/content/site";
 
 export function buildMetadata(override: Partial<Metadata> = {}): Metadata {
-  const title =
-    override.title ?? `${site.title} · Île-de-France`;
+  const title = override.title ?? `${site.title} · Île-de-France`;
   const description = override.description ?? site.description;
+  const canonical =
+    (override.alternates?.canonical as string | undefined) ?? site.url;
+
+  // Extract openGraph so we can deep-merge instead of replacing the whole object.
+  const { openGraph: ogOverride, alternates: altOverride, ...restOverride } =
+    override;
 
   return {
     metadataBase: new URL(site.url),
@@ -13,9 +18,7 @@ export function buildMetadata(override: Partial<Metadata> = {}): Metadata {
     authors: [{ name: site.name }],
     keywords: [...site.keywords],
     openGraph: {
-      type: "website",
       locale: site.locale,
-      url: site.url,
       siteName: site.name,
       title: String(title),
       description,
@@ -27,7 +30,11 @@ export function buildMetadata(override: Partial<Metadata> = {}): Metadata {
           alt: `${site.name} — ${site.title}`,
         },
       ],
-    },
+      // Defaults placed before ogOverride so callers can override type and url.
+      type: "website",
+      url: canonical,
+      ...ogOverride,
+    } as Metadata["openGraph"],
     twitter: {
       card: "summary_large_image",
       title: String(title),
@@ -40,12 +47,13 @@ export function buildMetadata(override: Partial<Metadata> = {}): Metadata {
       ],
     },
     alternates: {
-      canonical: site.url,
+      canonical,
+      ...altOverride,
     },
     robots: {
       index: true,
       follow: true,
     },
-    ...override,
+    ...restOverride,
   };
 }

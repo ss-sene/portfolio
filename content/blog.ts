@@ -9,6 +9,7 @@ export type BlogPost = {
   title: string;
   excerpt: string;
   date: string;
+  isoDate: string;
   readingTime: string;
   slug: string;
   tags: string[];
@@ -22,6 +23,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Le marché dev se polarise et les offres IA progressent dans un contexte global en recul. Tour d'horizon des données réelles et roadmap 12 mois pour un dev backend qui veut devenir AI Engineer, du premier projet RAG à la certification cloud.",
     date: "3 juin 2026",
+    isoDate: "2026-06-03",
     readingTime: "10 min",
     slug: "reconversion-dev-ia-ai-engineer-2026",
     tags: ["IA", "Carrière", "Roadmap"],
@@ -213,6 +215,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Retour d'expérience sur la mise en place d'une API REST fiable : conventions de nommage, gestion des erreurs, versioning et documentation automatique.",
     date: "15 sept. 2025",
+    isoDate: "2025-09-15",
     readingTime: "7 min",
     slug: "api-rest-symfony-api-platform",
     tags: ["Symfony", "API Platform", "Architecture"],
@@ -352,6 +355,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Analyse des problèmes de performance SQL rencontrés sur un projet Drupal et méthodologie pour les identifier, les prioriser et les corriger efficacement.",
     date: "22 juil. 2025",
+    isoDate: "2025-07-22",
     readingTime: "5 min",
     slug: "optimisation-sql-drupal",
     tags: ["SQL", "Drupal", "Performance"],
@@ -476,6 +480,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Comment passer de 20 % à 80 % de couverture de tests sur une application Symfony legacy, sans bloquer les évolutions fonctionnelles.",
     date: "10 mai 2025",
+    isoDate: "2025-05-10",
     readingTime: "6 min",
     slug: "couverture-tests-phpunit",
     tags: ["PHPUnit", "TDD", "Symfony"],

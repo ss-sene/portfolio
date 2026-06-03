@@ -23,7 +23,39 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${post.title} — ${site.name}`,
     description: post.excerpt,
     alternates: { canonical: `${site.url}/blog/${post.slug}` },
+    openGraph: {
+      type: "article",
+      tags: post.tags,
+    } as Metadata["openGraph"],
   });
+}
+
+function blogPostingSchema(post: (typeof blogPosts)[number]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.isoDate,
+    dateModified: post.isoDate,
+    url: `${site.url}/blog/${post.slug}`,
+    keywords: post.tags.join(", "),
+    author: {
+      "@type": "Person",
+      "@id": `${site.url}/#person`,
+      name: site.name,
+      url: site.url,
+    },
+    publisher: {
+      "@type": "Person",
+      "@id": `${site.url}/#person`,
+      name: site.name,
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${site.url}/blog/${post.slug}`,
+    },
+  };
 }
 
 export default async function ArticlePage({ params }: Props) {
@@ -33,6 +65,12 @@ export default async function ArticlePage({ params }: Props) {
 
   return (
     <main className="min-h-screen bg-paper pt-28 pb-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(blogPostingSchema(post)),
+        }}
+      />
       <Container>
         <div className="max-w-2xl">
           <a
@@ -67,24 +105,46 @@ export default async function ArticlePage({ params }: Props) {
 
           <ArticleContent blocks={post.content} />
 
-          <div className="mt-16 pt-10 border-t border-rule flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+          {/* Author bio */}
+          <div className="mt-16 pt-10 border-t border-rule">
+            <div className="flex items-start gap-5">
+              <div className="flex-1">
+                <p className="text-[10px] font-semibold uppercase tracking-widest text-ink/40 mb-2">
+                  Auteur
+                </p>
+                <p className="text-sm font-semibold text-ink">{site.name}</p>
+                <p className="mt-1 text-sm text-muted leading-relaxed">
+                  Développeur backend PHP/Symfony avec 4 ans d&rsquo;expérience. A travaillé chez Link Mobility, Randstad Digital et IAD Territoire Digital. Basé en Île-de-France, disponible pour un CDI.
+                </p>
+                <div className="mt-3 flex gap-4">
+                  <a
+                    href={site.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-semibold text-ink/50 hover:text-accent transition-colors uppercase tracking-widest"
+                  >
+                    LinkedIn &rarr;
+                  </a>
+                  <a
+                    href={site.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-semibold text-ink/50 hover:text-accent transition-colors uppercase tracking-widest"
+                  >
+                    GitHub &rarr;
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-8 pt-8 border-t border-rule">
             <a
               href="/blog"
               className="text-xs font-semibold uppercase tracking-widest text-ink/40 hover:text-accent transition-colors"
             >
               &larr; Tous les articles
             </a>
-            <div className="flex items-center gap-4">
-              <span className="text-xs text-muted">Écrit par</span>
-              <a
-                href={site.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs font-semibold text-ink hover:text-accent transition-colors"
-              >
-                {site.name}
-              </a>
-            </div>
           </div>
         </div>
       </Container>

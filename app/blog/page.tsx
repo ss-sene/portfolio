@@ -22,7 +22,9 @@ export default function BlogPage() {
             className="mt-4 font-condensed font-bold text-ink uppercase leading-[0.9] tracking-tight"
             style={{ fontSize: "clamp(3rem, 8vw, 7rem)" }}
           >
-            Blog
+            Notes techniques
+            <br />
+            <span className="text-ink/25">PHP, Symfony & IA</span>
           </h1>
         </div>
 
