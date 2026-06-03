@@ -17,6 +17,198 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    title:
+      "Reconversion développeur vers l'IA : pourquoi le marché du dev se tend et comment devenir AI Engineer en 2026",
+    excerpt:
+      "Le marché dev se polarise et les offres IA progressent dans un contexte global en recul. Tour d'horizon des données réelles et roadmap 12 mois pour un dev backend qui veut devenir AI Engineer, du premier projet RAG à la certification cloud.",
+    date: "3 juin 2026",
+    readingTime: "10 min",
+    slug: "reconversion-dev-ia-ai-engineer-2026",
+    tags: ["IA", "Carrière", "Roadmap"],
+    content: [
+      {
+        type: "p",
+        text: "En 2026, le développement logiciel reste demandé, mais le marché est devenu plus sélectif. Les entreprises ciblent davantage des profils capables de gérer cloud, data et IA embarquée que des \"développeurs web généralistes\". France Travail estime qu'en 2024, environ 77 800 projets de recrutement concernaient le numérique, avec plus de 424 000 offres publiées sur francetravail.fr sur les trois premiers trimestres, mais 85 % des recrutements étaient jugés \"difficiles\" par les employeurs (France Travail, 2025).",
+      },
+      {
+        type: "p",
+        text: "Les offres mentionnant explicitement l'IA progressent, alors que le volume global d'offres en France est retombé au niveau de février 2020 (Indeed Hiring Lab, 2026). Pour un développeur backend, c'est moins une reconversion qu'une extension du métier : on ne fait plus seulement des APIs, on orchestre des LLM, du RAG et des pipelines data/IA en production.",
+      },
+      {
+        type: "h2",
+        text: "Marché du développement : tension et spécialisation plutôt que \"fin du dev\"",
+      },
+      {
+        type: "p",
+        text: "France Travail décrit un secteur numérique dynamique mais polarisé : beaucoup de besoins, mais une difficulté forte à trouver les bons profils (France Travail, 2025). Le marché IT français est à deux vitesses : l'édition logicielle, le cloud, le SaaS et la data/IA continuent de croître, tandis que des segments plus traditionnels ralentissent et deviennent plus compétitifs (LeMagIT 2025, Hitechpros 2026).",
+      },
+      {
+        type: "p",
+        text: "Une étude d'O'Clock pointe un paradoxe : il manquerait encore environ 50 000 développeurs en France, alors que près de 30 000 nouveaux diplômés arrivent chaque année sur le marché (O'Clock, 2025). La tension est moins sur le volume global que sur la spécialisation : développeurs généralistes juniors d'un côté, profils cloud/data/IA ou seniors de l'autre.",
+      },
+      {
+        type: "h2",
+        text: "Offres IA en hausse dans un marché global en recul",
+      },
+      {
+        type: "p",
+        text: "Indeed Hiring Lab confirme que le volume global d'offres en France est retombé au niveau de février 2020 en 2026, après un pic post-Covid (Indeed Hiring Lab, 2026). Mais les annonces mentionnant l'IA suivent une trajectoire inverse : 21 % des offres en développement informatique contiennent des termes liés à l'IA, 15 % en administration systèmes/réseaux, 12 % dans la banque-finance (Indeed Hiring Lab France, avril 2026).",
+      },
+      {
+        type: "p",
+        text: "À l'échelle mondiale, le Global AI Jobs Barometer de PwC fait état d'une hausse de 273 % des offres liées à l'IA dans certains secteurs sur la dernière décennie (PwC, 2025). Des analyses comme celle d'Adapte-toi confirment cette dynamique en France, avec un marché IA parmi les plus actifs à horizon 2026 (Adapte-toi, 2026).",
+      },
+      {
+        type: "h2",
+        text: "Nuances du marché IA : qui profite réellement de cette vague ?",
+      },
+      {
+        type: "h3",
+        text: "IA recrute, mais surtout les profils expérimentés",
+      },
+      {
+        type: "p",
+        text: "Un décryptage du Figaro s'appuyant sur ManpowerGroup indique que 72 % des entreprises déclarent avoir des difficultés à recruter des profils maîtrisant l'IA (Le Figaro / ManpowerGroup, 2026). La pénurie concerne les profils capables de concevoir et déployer des solutions IA de bout en bout, pas ceux ayant simplement suivi un MOOC (OPIIEC, 2025).",
+      },
+      {
+        type: "p",
+        text: "Les grilles salariales publiées par Talma AI et Factoriel placent les niveaux de rémunération les plus élevés précisément sur les rôles qui combinent software engineering et IA appliquée : ML Engineer, LLM Engineer, GenAI Engineer (Talma AI 2026, Factoriel 2026).",
+      },
+      {
+        type: "h3",
+        text: "Forte concurrence sur l'entry-level IA",
+      },
+      {
+        type: "p",
+        text: "Les parcours \"devenir Data Scientist / ML Engineer\" attirent beaucoup de candidats en reconversion, mais seuls ceux ayant un portfolio solide et des compétences techniques réelles sortent du lot (BGB Formation 2025/2026, Studeria 2026). Il existe une vraie saturation de profils juniors IA purement théoriques, sans projets concrets. Ce n'est pas le marché que la communication de certaines formations IA laisse entendre.",
+      },
+      {
+        type: "h3",
+        text: "Importance du portfolio réel",
+      },
+      {
+        type: "p",
+        text: "Plusieurs analyses orientées carrière insistent sur 3 à 5 projets IA publiés sur GitHub pour les profils en reconversion (Adapte-toi 2026, BGB Formation 2026). Le \"projet portfolio numéro 1\" attendu par les recruteurs est souvent un assistant documentaire RAG, précisément parce qu'il illustre LLM, vector DB, backend et déploiement dans un même projet (Johan Puisais, 2026).",
+      },
+      {
+        type: "h2",
+        text: "L'IA comme extension naturelle du backend moderne",
+      },
+      {
+        type: "p",
+        text: "Pour un développeur backend, passer à l'IA ne ressemble pas vraiment à une reconversion. Tu ajoutes une couche LLM/RAG/agents à un socle d'APIs, de data et de cloud que tu connais déjà.",
+      },
+      {
+        type: "p",
+        text: "Le Réacteur explique que la valeur vient de plus en plus des développeurs \"augmentés par l'IA\", capables à la fois de maîtriser les fondamentaux du logiciel et d'intégrer l'IA dans leurs workflows (Le Réacteur, 2026). Google Cloud confirme cette vision dans ses rapports sur les tendances IA : la demande se concentre sur des cas d'usage concrets (agents, copilotes, recherche intelligente) intégrés dans des systèmes existants (Google Cloud AI Trends, 2025).",
+      },
+      {
+        type: "p",
+        text: "Pour un dev déjà à l'aise avec FastAPI/Django, Docker, SQL et CI/CD, les briques IA s'intègrent assez naturellement :",
+      },
+      {
+        type: "ul",
+        items: [
+          "Appels LLM via API (OpenAI, Claude, Mistral)",
+          "Conception d'un RAG : embeddings, vector DB, retrieval",
+          "Agents IA qui orchestrent des outils : APIs métier, bases, services internes",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Opportunités et salaires : pourquoi la montée en IA change la donne",
+      },
+      {
+        type: "p",
+        text: "Les grilles publiées par Factoriel pour Paris/Île-de-France indiquent pour 2026 des salaires juniors (0-2 ans) en IA/ML généralement autour de 52-62 k€ pour un LLM / GenAI Engineer, avec des confirmés à 70-90 k€ et des seniors jusqu'à 120-160 k€ (Factoriel, 2026). Talma AI publie des fourchettes similaires : Data Scientist à 50-70 k€ en junior, ML Engineer à 60-80 k€ (Talma AI, 2026).",
+      },
+      {
+        type: "p",
+        text: "Glassdoor donne un salaire moyen d'environ 51 500 € pour un AI Engineer en France (2025), autour de 54 000 € à Paris (Glassdoor, 2025). Un article de Smart-Way sur le portage salarial Data & IA évoque des TJM de 750 à 1 500 €/jour pour les profils data/IA expérimentés en 2026 (Smart-Way, 2026).",
+      },
+      {
+        type: "p",
+        text: "Johan Puisais évoque une \"prime IA\" de l'ordre de +50-60 % par rapport à un développeur classique pour les profils capables de déployer du RAG et des agents en production (Johan Puisais, 2026). Le chiffre précis varie selon les sources, mais toutes placent les profils Data/IA bien outillés dans la fourchette haute des salaires IT.",
+      },
+      {
+        type: "h2",
+        text: "Roadmap 12 mois : de développeur backend à AI Engineer appliqué",
+      },
+      {
+        type: "p",
+        text: "Cette roadmap s'adresse à un dev backend avec 3 à 5 ans d'expérience qui veut évoluer vers AI Engineer ou GenAI Engineer en gardant un ancrage terrain.",
+      },
+      {
+        type: "h3",
+        text: "Mois 1-3 : solidifier le socle Python / backend / data",
+      },
+      {
+        type: "p",
+        text: "Objectif : être à l'aise pour construire une API Python propre et manipuler des données pour l'IA.",
+      },
+      {
+        type: "p",
+        text: "Côté backend : FastAPI (ou Django/DRF) pour les APIs REST, validation Pydantic, tests unitaires. Côté données : Pandas ou Polars, SQL avancé, bonnes pratiques de nettoyage. Infra : Docker, Git, pipeline CI simple avec tests et lint.",
+      },
+      {
+        type: "p",
+        text: "A ce stade, le critère est simple : une API Python déployée (projet perso ou conteneurisé), des tests de base qui passent, et la capacité à charger et explorer un dataset CSV ou SQL sans blocage.",
+      },
+      {
+        type: "h3",
+        text: "Mois 4-6 : premiers projets LLM / RAG visibles",
+      },
+      {
+        type: "p",
+        text: "Objectif : passer de \"j'utilise un LLM\" à \"je livre un produit IA simple de bout en bout\".",
+      },
+      {
+        type: "p",
+        text: "Appels API OpenAI, Claude ou Mistral, embeddings, vector DB parmi Qdrant, pgvector ou Weaviate. LangChain ou LlamaIndex pour les chaînes simples et le RAG basique. Deux projets concrets : un assistant documentaire (upload PDF, questions/réponses sur les documents) et un chatbot métier (FAQ interne ou documentation d'un produit). Les deux Dockerisés, avec variables d'environnement et configuration propre.",
+      },
+      {
+        type: "p",
+        text: "A ce stade : deux projets IA complets sur GitHub avec README et instructions d'installation, une démo utilisable, et la capacité à expliquer l'architecture sur un schéma simple (API, LLM, vector DB, stockage).",
+      },
+      {
+        type: "h3",
+        text: "Mois 7-9 : robustesse, MLOps léger et agents IA",
+      },
+      {
+        type: "p",
+        text: "Objectif : se rapprocher du niveau attendu en production.",
+      },
+      {
+        type: "p",
+        text: "Sur la robustesse : logging structuré, gestion des erreurs, métriques de base, stratégies de réduction des coûts LLM par cache ou arbitrage entre modèles locaux et API. Sur le MLOps : versionning des prompts, jeux de tests avec des questions/réponses de référence, suivi du taux de réponses pertinentes. Et un agent IA qui appelle au moins un outil externe de manière fiable : API interne, base SQL, service tiers.",
+      },
+      {
+        type: "p",
+        text: "A ce stade : un projet monitoré avec logs et métriques, et la capacité à justifier les choix techniques sur la latence, les coûts et la qualité des réponses.",
+      },
+      {
+        type: "h3",
+        text: "Mois 10-12 : spécialisation, validation externe et positionnement",
+      },
+      {
+        type: "p",
+        text: "Objectif : transformer tout ça en profil lisible pour le marché.",
+      },
+      {
+        type: "p",
+        text: "Choisir une spécialisation franche : AI Engineer orienté RAG/chatbots, orienté data/analytics (\"chat with data\"), ou orienté automation/AIOps. Passer une certification cloud/IA reconnue, par exemple le parcours Microsoft AI Engineer (successeur de AI-102) ou l'équivalent AWS/GCP, pour montrer la capacité à déployer dans un écosystème industriel (Microsoft, 2025-2026).",
+      },
+      {
+        type: "p",
+        text: "Repositionner le CV en \"AI Backend Engineer / GenAI Engineer\", mettre en avant trois projets IA sur GitHub, publier un post LinkedIn qui raconte la transition et les choix techniques concrets.",
+      },
+      {
+        type: "p",
+        text: "Pour entrer dans le niveau \"AI Engineer confirmé\" : trois projets bien documentés dont au moins un proche de conditions réelles (auth, logs, monitoring basique), une certification ou une contribution équivalente, et la capacité à raconter de A à Z un système IA conçu de bout en bout, du contexte métier jusqu'aux limites.",
+      },
+    ],
+  },
+  {
     title: "Structurer une API REST robuste avec Symfony et API Platform",
     excerpt:
       "Retour d'expérience sur la mise en place d'une API REST fiable : conventions de nommage, gestion des erreurs, versioning et documentation automatique.",
