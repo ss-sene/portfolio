@@ -10,10 +10,14 @@ export function Hero() {
     >
       <div className="mx-auto max-w-350 w-full px-8 lg:px-14 py-20 lg:py-28">
         {/* Main title */}
+        <p className="mb-5 text-[10px] font-semibold uppercase tracking-[0.14em] text-ink/50">
+          {profile.name} &mdash; Développeur confirmé &middot; Île-de-France
+        </p>
+
         <h1
           id="hero-heading"
           className="font-condensed font-bold text-ink uppercase leading-[0.88] tracking-tight"
-          style={{ fontSize: "clamp(4.5rem, 13.5vw, 13rem)" }}
+          style={{ fontSize: "clamp(3.5rem, 13.5vw, 13rem)" }}
         >
           Développeur
           <br />

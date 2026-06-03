@@ -42,7 +42,7 @@ export function Header() {
 
         <button
           type="button"
-          className="md:hidden p-2 -mr-2 text-ink hover:text-accent transition-colors"
+          className="md:hidden p-3 -mr-3 text-ink hover:text-accent transition-colors"
           onClick={() => setOpen(!open)}
           aria-expanded={open}
           aria-controls="mobile-nav"

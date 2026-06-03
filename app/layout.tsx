@@ -16,7 +16,8 @@ const barlowCondensed = Barlow_Condensed({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
   variable: "--font-barlow",
-  display: "swap",
+  display: "block",
+  fallback: ["Arial Narrow", "Arial", "sans-serif"],
 });
 
 export const metadata: Metadata = buildMetadata();
@@ -32,6 +33,9 @@ export default function RootLayout({
       className={`${inter.variable} ${barlowCondensed.variable}`}
     >
       <body className="bg-canvas text-ink antialiased min-h-screen flex flex-col">
+        <noscript>
+          <style>{`.animate-reveal { opacity: 1 !important; transform: none !important; }`}</style>
+        </noscript>
         <JsonLd />
         <Header />
         <main className="flex-1">{children}</main>

@@ -2,8 +2,8 @@ export const site = {
   name: "Serigne Saliou SENE",
   title: "Développeur Backend PHP/Symfony",
   description:
-    "Développeur backend avec 4 ans d'expérience sur PHP 8, Symfony et les API REST. Je conçois des applications web sécurisées, performantes et maintenables.",
-  url: "https://serignesalioune.fr",
+    "Développeur backend confirmé, 4 ans sur PHP 8 et Symfony. Disponible immédiatement pour un CDI en Île-de-France. APIs REST, tests unitaires, CI/CD. Basé à Sarcelles.",
+  url: "https://serigne-saliou-sene.vercel.app",
   locale: "fr_FR",
   email: "serignesaliou.sene@outlook.fr",
   phone: "+33 6 16 26 72 92",

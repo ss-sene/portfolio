@@ -54,6 +54,13 @@ const nextConfig: NextConfig = {
   // Supprime l'en-tête X-Powered-By qui expose la stack technique
   poweredByHeader: false,
 
+  images: {
+    formats: ["image/avif", "image/webp"],
+    minimumCacheTTL: 31536000,
+    deviceSizes: [375, 640, 828, 1080, 1200],
+    imageSizes: [192, 290],
+  },
+
   async headers() {
     return [
       {

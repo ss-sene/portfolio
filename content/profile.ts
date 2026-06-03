@@ -2,7 +2,7 @@ export const profile = {
   name: "Serigne Saliou SENE",
   title: "Développeur Backend PHP/Symfony",
   subtitle:
-    "Développeur backend avec 4 ans d'expérience sur PHP 8, Symfony et les API REST, je conçois des applications web sécurisées, performantes et maintenables. J'améliore la qualité du code, la fiabilité des services et l'efficacité des pipelines CI/CD.",
+    "4 ans d'expérience en PHP 8 et Symfony. Spécialisé en API REST, optimisation SQL et CI/CD GitLab. Je conçois des applications backend sécurisées, performantes et faciles à maintenir. Disponible immédiatement pour un CDI en Île-de-France.",
   quickFacts: [
     "4 ans d'expérience en développement backend",
     "PHP 8, Symfony, API Platform, API REST",

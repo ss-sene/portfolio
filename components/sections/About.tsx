@@ -53,12 +53,12 @@ export function About() {
                 {/* Cercle photo */}
                 <div className="w-48 h-48 lg:w-72 lg:h-72 rounded-full overflow-hidden ring-1 ring-rule">
                   <Image
-                    src="/images/serigne-saliou-sene.png"
+                    src="/images/serigne-saliou-sene.webp"
                     alt="Serigne Saliou SENE — Développeur Backend PHP/Symfony"
                     width={290}
                     height={290}
                     className="w-full h-full object-cover object-top"
-                    priority
+                    sizes="(max-width: 1024px) 192px, 290px"
                   />
                 </div>
 

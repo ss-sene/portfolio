@@ -3,7 +3,7 @@ import { site } from "@/content/site";
 
 export function buildMetadata(override: Partial<Metadata> = {}): Metadata {
   const title =
-    override.title ?? `${site.name} — ${site.title}`;
+    override.title ?? `${site.title} — Île-de-France | ${site.name}`;
   const description = override.description ?? site.description;
 
   return {
@@ -24,6 +24,12 @@ export function buildMetadata(override: Partial<Metadata> = {}): Metadata {
       card: "summary_large_image",
       title: String(title),
       description,
+      images: [
+        {
+          url: "/opengraph-image",
+          alt: `${site.name} — ${site.title}`,
+        },
+      ],
     },
     alternates: {
       canonical: site.url,

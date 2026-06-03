@@ -5,7 +5,13 @@ export const alt = `${site.name} — ${site.title}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function Image() {
+export default async function Image() {
+  const fontData = await fetch(
+    new URL(
+      "https://fonts.gstatic.com/s/barlowcondensed/v12/HTxwL3I-JCGChYJ8VI-L6OO_au7B43LT.woff2"
+    )
+  ).then((res) => res.arrayBuffer());
+
   return new ImageResponse(
     (
       <div
@@ -28,6 +34,7 @@ export default function Image() {
             right: 80,
             fontSize: 13,
             fontWeight: 600,
+            fontFamily: "BarlowCondensed",
             color: "rgba(237,234,224,0.30)",
             letterSpacing: "0.1em",
             textTransform: "uppercase",
@@ -53,6 +60,7 @@ export default function Image() {
           style={{
             fontSize: 86,
             fontWeight: 700,
+            fontFamily: "BarlowCondensed",
             color: "#EDEAE0",
             lineHeight: 0.88,
             letterSpacing: "-0.01em",
@@ -69,6 +77,7 @@ export default function Image() {
             marginTop: 28,
             fontSize: 17,
             fontWeight: 600,
+            fontFamily: "BarlowCondensed",
             color: "rgba(237,234,224,0.45)",
             letterSpacing: "0.12em",
             textTransform: "uppercase",
@@ -91,6 +100,7 @@ export default function Image() {
             style={{
               fontSize: 13,
               fontWeight: 600,
+              fontFamily: "BarlowCondensed",
               color: "rgba(237,234,224,0.25)",
               letterSpacing: "0.1em",
               textTransform: "uppercase",
@@ -112,6 +122,7 @@ export default function Image() {
             style={{
               fontSize: 13,
               fontWeight: 600,
+              fontFamily: "BarlowCondensed",
               color: "rgba(224,78,20,0.70)",
               letterSpacing: "0.1em",
               textTransform: "uppercase",
@@ -123,6 +134,16 @@ export default function Image() {
         </div>
       </div>
     ),
-    { ...size }
+    {
+      ...size,
+      fonts: [
+        {
+          name: "BarlowCondensed",
+          data: fontData,
+          weight: 700,
+          style: "normal",
+        },
+      ],
+    }
   );
 }

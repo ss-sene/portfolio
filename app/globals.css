@@ -55,6 +55,11 @@
     outline: 2px solid var(--accent);
     outline-offset: 3px;
   }
+
+  /* Prevent section headings from disappearing under the fixed header (h-16 = 64px) */
+  section[id] {
+    scroll-margin-top: 4rem;
+  }
 }
 
 /* Scroll reveal */
