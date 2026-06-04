@@ -4,12 +4,12 @@ import { useState } from "react";
 import { site } from "@/content/site";
 
 const navLinks = [
-  { href: "#projets", label: "Projets" },
-  { href: "#experience", label: "Expérience" },
-  { href: "#a-propos", label: "À propos" },
-  { href: "#competences", label: "Compétences" },
+  { href: "/#projets", label: "Projets" },
+  { href: "/#experience", label: "Expérience" },
+  { href: "/#a-propos", label: "À propos" },
+  { href: "/#competences", label: "Compétences" },
   { href: "/blog", label: "Blog" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export function Header() {
