@@ -6,6 +6,7 @@ import { Footer } from "@/components/layout/Footer";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { buildMetadata } from "@/lib/seo";
 import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -35,6 +36,7 @@ export default function RootLayout({
     >
       <body className="bg-canvas text-ink antialiased min-h-screen flex flex-col">
         <Analytics/>
+        <SpeedInsights/>
         <noscript>
           <style>{`.animate-reveal { opacity: 1 !important; transform: none !important; }`}</style>
         </noscript>
