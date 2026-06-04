@@ -5,6 +5,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { buildMetadata } from "@/lib/seo";
+import { Analytics } from "@vercel/analytics/next"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -33,6 +34,7 @@ export default function RootLayout({
       className={`${inter.variable} ${barlowCondensed.variable}`}
     >
       <body className="bg-canvas text-ink antialiased min-h-screen flex flex-col">
+        <Analytics/>
         <noscript>
           <style>{`.animate-reveal { opacity: 1 !important; transform: none !important; }`}</style>
         </noscript>
