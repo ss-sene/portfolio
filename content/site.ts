@@ -1,8 +1,8 @@
 export const site = {
   name: "Serigne Saliou SENE",
-  title: "Développeur Backend PHP/Symfony",
+  title: "Ingénieur Backend & APIs — Symfony · API Platform · Drupal",
   description:
-    "Développeur backend confirmé, 4 ans sur PHP 8 et Symfony. Disponible immédiatement pour un CDI en Île-de-France. APIs REST, tests unitaires, CI/CD. Basé à Sarcelles.",
+    "Ingénieur Backend spécialisé Symfony, API Platform et Drupal. Expertise en performance, qualité logicielle, sécurité API et industrialisation CI/CD. Disponible pour missions backend en France.",
   url: "https://serigne-saliou-sene.vercel.app",
   locale: "fr_FR",
   email: "serignesaliou.sene@outlook.fr",
@@ -11,13 +11,17 @@ export const site = {
   github: "https://github.com/ss-sene",
   linkedin: "https://www.linkedin.com/in/serignesaliousene",
   keywords: [
-    "développeur backend",
+    "ingénieur backend",
     "PHP",
     "Symfony",
+    "API Platform",
+    "Drupal",
     "API REST",
     "CI/CD",
     "optimisation SQL",
+    "PostgreSQL",
+    "performance backend",
+    "qualité logicielle",
     "Île-de-France",
-    "CDI",
   ],
 } as const;

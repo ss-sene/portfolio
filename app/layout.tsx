@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Barlow_Condensed } from "next/font/google";
+import { DM_Sans, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -8,18 +8,18 @@ import { buildMetadata } from "@/lib/seo";
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
-const inter = Inter({
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-dm-sans",
   display: "swap",
 });
 
-const barlowCondensed = Barlow_Condensed({
+const cormorantGaramond = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
-  variable: "--font-barlow",
-  display: "block",
-  fallback: ["Arial Narrow", "Arial", "sans-serif"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-cormorant",
+  display: "swap",
 });
 
 export const metadata: Metadata = buildMetadata();
@@ -32,7 +32,7 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      className={`${inter.variable} ${barlowCondensed.variable}`}
+      className={`${dmSans.variable} ${cormorantGaramond.variable}`}
     >
       <body className="bg-canvas text-ink antialiased min-h-screen flex flex-col">
         <Analytics/>

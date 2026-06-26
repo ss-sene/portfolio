@@ -1,12 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --canvas: #EDEAE0;
-  --ink: #0C1220;
-  --muted: #8A7F76;
-  --accent: #E04E14;
-  --rule: #D8D3C8;
-  --paper: #FFFFFF;
+  --canvas: #EDEAE2;
+  --ink: #1A1C21;
+  --muted: #6C6F73;
+  --accent: #1B4A52;
+  --accent-light: #EBF3F4;
+  --rule: #D3CFC6;
+  --paper: #F4F1EB;
+  --surface: #E5E1D8;
 }
 
 @theme inline {
@@ -14,10 +16,12 @@
   --color-ink: var(--ink);
   --color-muted: var(--muted);
   --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
   --color-rule: var(--rule);
   --color-paper: var(--paper);
-  --font-sans: var(--font-inter);
-  --font-condensed: var(--font-barlow);
+  --color-surface: var(--surface);
+  --font-sans: var(--font-dm-sans);
+  --font-display: var(--font-cormorant);
 }
 
 @layer base {
@@ -56,7 +60,6 @@
     outline-offset: 3px;
   }
 
-  /* Prevent section headings from disappearing under the fixed header (h-16 = 64px) */
   section[id] {
     scroll-margin-top: 4rem;
   }
@@ -65,8 +68,8 @@
 /* Scroll reveal */
 .animate-reveal {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
 .animate-reveal.in-view {
