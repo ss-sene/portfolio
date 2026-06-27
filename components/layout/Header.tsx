@@ -3,11 +3,12 @@
 import { useState, useEffect } from "react";
 
 const navLinks = [
-  { href: "#top", label: "Accueil" },
-  { href: "#expertise", label: "Expertise" },
-  { href: "#cas", label: "Études de cas" },
-  { href: "#methode", label: "Méthode" },
-  { href: "#parcours", label: "Parcours" },
+  { href: "/", label: "Accueil" },
+  { href: "/#expertise", label: "Expertise" },
+  { href: "/#cas", label: "Études de cas" },
+  { href: "/#methode", label: "Méthode" },
+  { href: "/#parcours", label: "Parcours" },
+  { href: "/blog", label: "Blog" },
 ];
 
 function MoonIcon() {

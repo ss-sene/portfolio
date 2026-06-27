@@ -17,7 +17,7 @@ export type BlogPost = {
   content: ContentBlock[];
 };
 
-export const blogPosts: BlogPost[] = [
+const _blogPosts: BlogPost[] = [
   {
     title:
       "Reconversion développeur vers l'IA : pourquoi le marché du dev se tend et comment devenir AI Engineer en 2026",
@@ -808,3 +808,7 @@ export const blogPosts: BlogPost[] = [
     ],
   },
 ];
+
+export const blogPosts = [..._blogPosts].sort((a, b) =>
+  b.isoDate.localeCompare(a.isoDate)
+);

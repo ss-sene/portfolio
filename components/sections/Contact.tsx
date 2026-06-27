@@ -38,7 +38,7 @@ export function Contact() {
               Vous avez une API lente, un backend difficile à faire évoluer, une base de données qui devient un point de friction ou un delivery encore trop risqué ? Je peux vous aider à clarifier la situation, identifier les points critiques et remettre en place un socle plus fiable.
             </p>
             <p className="text-faint m-0" style={{ flex: "1 1 300px", fontSize: "15.5px", lineHeight: 1.72 }}>
-              Je suis ouvert aux missions backend, API, performance, qualité logicielle, industrialisation CI/CD et refonte technique sur Symfony / Drupal / PHP.
+              Je suis ouvert aux missions (freelance ou en CDI) backend, API, performance, qualité logicielle, industrialisation CI/CD et refonte technique sur Symfony / Drupal / PHP.
             </p>
           </div>
         </AnimateOnScroll>

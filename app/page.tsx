@@ -5,6 +5,7 @@ import { CaseStudies } from "@/components/sections/CaseStudies";
 import { Method } from "@/components/sections/Method";
 import { Skills } from "@/components/sections/Skills";
 import { Experience } from "@/components/sections/Experience";
+import { BlogPreview } from "@/components/sections/BlogPreview";
 import { Contact } from "@/components/sections/Contact";
 
 export default function HomePage() {
@@ -17,6 +18,7 @@ export default function HomePage() {
       <Method />
       <Skills />
       <Experience />
+      <BlogPreview />
       <Contact />
     </>
   );

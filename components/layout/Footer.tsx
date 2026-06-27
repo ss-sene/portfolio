@@ -33,6 +33,9 @@ export function Footer() {
         </div>
 
         <div className="flex items-center gap-5">
+          <a href="/blog" className="font-mono text-faint hover:text-muted transition-colors" style={{ fontSize: "11.5px", textDecoration: "none" }}>
+            Blog
+          </a>
           <a href="/privacy" className="font-mono text-faint hover:text-muted transition-colors" style={{ fontSize: "11.5px", textDecoration: "none" }}>
             Confidentialité
           </a>

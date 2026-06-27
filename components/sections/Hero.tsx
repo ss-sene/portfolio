@@ -50,7 +50,7 @@ export function Hero() {
               flexShrink: 0,
             }}
           />
-          Disponible — missions backend &amp; API
+          Disponible — missions backend &amp; API (freelance ou CDI)
         </span>
 
         {/* Main heading */}
