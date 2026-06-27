@@ -15,16 +15,21 @@ export function Button({
   ...props
 }: ButtonProps) {
   const base =
-    "inline-flex items-center justify-center text-[11px] font-semibold uppercase tracking-[0.14em] transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent px-7 py-4";
+    "inline-flex items-center justify-center font-semibold transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
 
   const variants = {
-    primary: "bg-accent text-paper hover:bg-accent/85",
-    outline: "border border-ink/30 text-ink hover:border-ink hover:bg-ink hover:text-canvas",
-    ghost: "text-accent hover:text-accent/70 underline underline-offset-4",
+    primary: "bg-accent text-on-accent border border-accent hover:bg-accent-2",
+    outline: "bg-transparent text-ink border border-line-strong hover:border-accent hover:text-accent",
+    ghost: "text-accent hover:text-accent-2 underline underline-offset-4",
   };
 
   return (
-    <a href={href} className={cx(base, variants[variant], className)} {...props}>
+    <a
+      href={href}
+      className={cx(base, variants[variant], className)}
+      style={{ fontSize: "15px", padding: "15px 24px", borderRadius: "8px", textDecoration: "none" }}
+      {...props}
+    >
       {children}
     </a>
   );

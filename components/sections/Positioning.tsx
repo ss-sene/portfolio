@@ -1,4 +1,5 @@
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
+import { SectionLabel } from "@/components/ui/SectionLabel";
 
 const valuePoints = [
   "Des APIs plus fiables et plus simples à faire évoluer",
@@ -10,57 +11,59 @@ const valuePoints = [
 export function Positioning() {
   return (
     <section
-      className="py-24 lg:py-36 bg-paper border-t border-rule"
+      id="valeur"
+      className="border-t border-line"
+      style={{ padding: "clamp(72px,9vw,128px) 0" }}
       aria-labelledby="positioning-heading"
     >
-      <div className="mx-auto max-w-350 w-full px-8 lg:px-14">
-        <div className="grid lg:grid-cols-[1fr_420px] gap-16 lg:gap-24 items-start">
+      <div className="mx-auto max-w-[1200px] w-full px-5 lg:px-11">
+        <AnimateOnScroll>
+          <SectionLabel>Positionnement</SectionLabel>
+        </AnimateOnScroll>
+        <h2
+          id="positioning-heading"
+          className="font-display font-medium text-ink"
+          style={{ margin: 0, maxWidth: "920px", fontSize: "clamp(28px,4vw,48px)", lineHeight: 1.12 }}
+        >
+          Un backend propre n&rsquo;est pas un luxe. C&rsquo;est ce qui permet à un produit d&rsquo;évoluer sans se fragiliser.
+        </h2>
 
-          {/* Main statement */}
+        <div
+          style={{
+            marginTop: "44px",
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "clamp(32px,6vw,72px)",
+          }}
+        >
+          {/* Left */}
           <AnimateOnScroll>
-            <div>
-              <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent">
-                Positionnement
-              </span>
-              <h2
-                id="positioning-heading"
-                className="mt-6 font-display font-semibold text-ink leading-[0.92] tracking-tight"
-                style={{ fontSize: "clamp(2.25rem, 5vw, 4.75rem)" }}
-              >
-                Un backend propre n&rsquo;est pas un luxe.
-                <br />
-                <span className="italic font-normal text-ink/40">
-                  C&rsquo;est ce qui permet à un produit d&rsquo;évoluer sans se fragiliser.
-                </span>
-              </h2>
-              <p className="mt-8 text-base text-ink/65 leading-relaxed max-w-xl">
-                Quand une API devient lente, qu&rsquo;un legacy freine chaque évolution ou qu&rsquo;un déploiement reste risqué, le problème n&rsquo;est pas seulement technique : il devient produit, organisationnel et économique. Mon rôle est de remettre de la lisibilité, de la robustesse et de la fiabilité dans la couche backend pour redonner de la marge de manœuvre aux équipes.
-              </p>
-              <p className="mt-5 text-sm text-muted leading-relaxed max-w-xl">
-                J&rsquo;interviens aussi bien sur la conception de nouvelles briques que sur l&rsquo;amélioration d&rsquo;existants : architecture Symfony, APIs REST, optimisation SQL, sécurisation des accès, industrialisation CI/CD, tests automatisés et refactoring ciblé.
-              </p>
+            <div style={{ flex: "1 1 440px", maxWidth: "620px", display: "flex", flexDirection: "column", gap: "20px" }}>
+            <p className="text-muted m-0" style={{ fontSize: "17px", lineHeight: 1.75 }}>
+              Quand une API devient lente, qu&rsquo;un legacy freine chaque évolution ou qu&rsquo;un déploiement reste risqué, le problème n&rsquo;est pas seulement technique : il devient produit, organisationnel et économique. Mon rôle est de remettre de la lisibilité, de la robustesse et de la fiabilité dans la couche backend pour redonner de la marge de manœuvre aux équipes.
+            </p>
+            <p className="text-muted m-0" style={{ fontSize: "17px", lineHeight: 1.75 }}>
+              J&rsquo;interviens aussi bien sur la conception de nouvelles briques que sur l&rsquo;amélioration d&rsquo;existants : architecture Symfony, APIs REST, optimisation SQL, sécurisation des accès, industrialisation CI/CD, tests automatisés et refactoring ciblé.
+            </p>
             </div>
           </AnimateOnScroll>
 
-          {/* Value points */}
-          <AnimateOnScroll delay={150}>
-            <div className="lg:pt-4">
-              <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-ink/40 mb-8">
-                Ce que j&rsquo;apporte
-              </p>
-              <ul className="space-y-0 divide-y divide-rule">
-                {valuePoints.map((point, i) => (
-                  <li key={i} className="py-5 flex items-start gap-4">
-                    <span
-                      className="mt-0.5 shrink-0 w-5 h-5 rounded-full border border-accent/40 flex items-center justify-center"
-                      aria-hidden="true"
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-                    </span>
-                    <span className="text-sm text-ink/75 leading-snug">{point}</span>
-                  </li>
-                ))}
-              </ul>
+          {/* Right — value points */}
+          <AnimateOnScroll delay={120}>
+            <div style={{ flex: "1 1 360px", maxWidth: "480px" }}>
+            <p className="font-mono text-faint m-0 mb-6" style={{ fontSize: "11.5px", letterSpacing: ".12em", textTransform: "uppercase" }}>
+              Ce que j&rsquo;apporte
+            </p>
+            <div className="flex flex-col">
+              {valuePoints.map((point, i) => (
+                <div key={i} className="flex gap-[14px] items-start py-[18px] border-b border-line">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 mt-[1px]" aria-hidden="true">
+                    <path d="M20 6 9 17l-5-5" />
+                  </svg>
+                  <span style={{ fontSize: "15.5px", lineHeight: 1.55 }} className="text-ink">{point}</span>
+                </div>
+              ))}
+            </div>
             </div>
           </AnimateOnScroll>
         </div>

@@ -1,19 +1,10 @@
-import { cx } from "@/lib/utils";
-
-type SectionLabelProps = {
-  children: React.ReactNode;
-  className?: string;
-};
-
-export function SectionLabel({ children, className }: SectionLabelProps) {
+export function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <span
-      className={cx(
-        "inline-block text-xs font-semibold uppercase tracking-widest text-accent",
-        className
-      )}
-    >
-      {children}
-    </span>
+    <div className="flex items-center gap-3.5 mb-5">
+      <span className="w-7 h-px bg-accent block shrink-0" aria-hidden="true" />
+      <span className="font-mono text-[12px] tracking-[.16em] uppercase text-accent font-medium">
+        {children}
+      </span>
+    </div>
   );
 }

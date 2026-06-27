@@ -1,27 +1,61 @@
 @import "tailwindcss";
 
+/* ─── Light mode ─────────────────────────────────────────── */
 :root {
-  --canvas: #EDEAE2;
-  --ink: #1A1C21;
-  --muted: #6C6F73;
-  --accent: #1B4A52;
-  --accent-light: #EBF3F4;
-  --rule: #D3CFC6;
-  --paper: #F4F1EB;
-  --surface: #E5E1D8;
+  --bg: #f1efe9;
+  --surface: #ffffff;
+  --surface-2: #f8f6f1;
+  --surface-3: #ebe8e0;
+  --ink: #1b1d1d;
+  --muted: #5c5e5a;
+  --faint: #8a8c85;
+  --line: #e1ddd3;
+  --line-strong: #d0cbbe;
+  --accent: #0e5a52;
+  --accent-2: #127065;
+  --accent-tint: #e4efeb;
+  --bronze: #8a7350;
+  --on-accent: #ffffff;
+  --grid: rgba(14, 90, 82, 0.045);
+}
+
+/* ─── Dark mode ─────────────────────────────────────────── */
+.dark {
+  --bg: #0e1211;
+  --surface: #161b1a;
+  --surface-2: #111615;
+  --surface-3: #1c2322;
+  --ink: #edefec;
+  --muted: #9aa39d;
+  --faint: #6b736d;
+  --line: #242b29;
+  --line-strong: #2e3834;
+  --accent: #4cc4ad;
+  --accent-2: #6ad4bf;
+  --accent-tint: #15302b;
+  --bronze: #b59a6e;
+  --on-accent: #06160f;
+  --grid: rgba(76, 196, 173, 0.06);
 }
 
 @theme inline {
-  --color-canvas: var(--canvas);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
   --color-ink: var(--ink);
   --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
   --color-accent: var(--accent);
-  --color-accent-light: var(--accent-light);
-  --color-rule: var(--rule);
-  --color-paper: var(--paper);
-  --color-surface: var(--surface);
-  --font-sans: var(--font-dm-sans);
-  --font-display: var(--font-cormorant);
+  --color-accent-2: var(--accent-2);
+  --color-accent-tint: var(--accent-tint);
+  --color-bronze: var(--bronze);
+  --color-on-accent: var(--on-accent);
+  --font-sans: var(--font-hanken);
+  --font-display: var(--font-spectral);
+  --font-mono: var(--font-jetbrains);
 }
 
 @layer base {
@@ -30,17 +64,11 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
-
-    *,
-    *::before,
-    *::after {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
       animation-duration: 0.01ms !important;
       transition-duration: 0.01ms !important;
     }
-
     .animate-reveal {
       opacity: 1 !important;
       transform: none !important;
@@ -49,7 +77,7 @@
   }
 
   body {
-    background-color: var(--canvas);
+    background-color: var(--bg);
     color: var(--ink);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -68,8 +96,8 @@
 /* Scroll reveal */
 .animate-reveal {
   opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transform: translateY(16px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
 }
 
 .animate-reveal.in-view {

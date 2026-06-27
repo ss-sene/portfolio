@@ -3,6 +3,7 @@ export type CaseStudy = {
   company: string;
   role: string;
   period: string;
+  yearRange: string;
   location: string;
   title: string;
   context: string;
@@ -17,6 +18,7 @@ export const caseStudies: CaseStudy[] = [
     company: "Kilifa Consulting",
     role: "Développeur Backend",
     period: "Juin 2024 – Fév. 2026",
+    yearRange: "2024 — 2026",
     location: "Colombes",
     title: "Concevoir une plateforme documentaire backend-first capable de rester stable à mesure que les usages montent",
     context: "Développement d'une plateforme documentaire avec gestion des documents, des utilisateurs, des droits et de la recherche avancée.",
@@ -39,6 +41,7 @@ export const caseStudies: CaseStudy[] = [
     company: "Link Mobility",
     role: "Développeur Fullstack",
     period: "Oct. 2023 – Mai 2024",
+    yearRange: "2023 — 2024",
     location: "Riorges",
     title: "Renforcer un backend Symfony à forte volumétrie tout en réduisant le risque de régression",
     context: "Développement et maintenance d'un backend Symfony pour une API RCS avec fort volume d'échanges.",
@@ -62,6 +65,7 @@ export const caseStudies: CaseStudy[] = [
     company: "Randstad Digital",
     role: "Développeur PHP / Drupal",
     period: "Fév. 2022 – Sept. 2023",
+    yearRange: "2022 — 2023",
     location: "Lyon",
     title: "Optimiser l'architecture backend et les performances SQL sur des services critiques",
     context: "Travail sur des services backend Drupal avec contraintes de performance fortes et exigences SLA.",
@@ -85,6 +89,7 @@ export const caseStudies: CaseStudy[] = [
     company: "IAD Territoire Digital",
     role: "Développeur d'application",
     period: "Nov. 2018 – Sept. 2021",
+    yearRange: "2018 — 2021",
     location: "Besançon",
     title: "Utiliser les tests comme levier direct de fiabilité sur une application Symfony",
     context: "Travail sur une application Symfony avec besoin d'améliorer la qualité et la stabilité.",

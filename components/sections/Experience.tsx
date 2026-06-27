@@ -1,152 +1,132 @@
-import { experiences } from "@/content/experience";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
+import { SectionLabel } from "@/components/ui/SectionLabel";
+
+const experiences = [
+  { period: "2024 — 2026", location: "Colombes", company: "Kilifa Consulting", role: "Développeur Backend" },
+  { period: "2023 — 2024", location: "Riorges", company: "Link Mobility", role: "Développeur Fullstack" },
+  { period: "2022 — 2023", location: "Lyon", company: "Randstad Digital", role: "Développeur PHP / Drupal" },
+  { period: "2018 — 2021", location: "Besançon", company: "IAD Territoire Digital", role: "Développeur d'application — Alternance" },
+];
 
 const education = [
-  {
-    degree: "Master Ingénierie Web",
-    school: "École Supérieure de Génie Informatique",
-    location: "Paris",
-    period: "2019 – 2021",
-  },
-  {
-    degree: "Bachelor Ingénierie Web",
-    school: "École Supérieure de Génie Informatique",
-    location: "Paris",
-    period: "2018 – 2019",
-  },
-  {
-    degree: "DUT Informatique",
-    school: "Université Polytechnique Hauts-de-France",
-    location: "Maubeuge",
-    period: "2015 – 2017",
-  },
-] as const;
+  { degree: "Master Ingénierie Web", school: "École Supérieure de Génie Informatique", location: "Paris", period: "2019 — 2021" },
+  { degree: "Bachelor Ingénierie Web", school: "École Supérieure de Génie Informatique", location: "Paris", period: "2018 — 2019" },
+  { degree: "DUT Informatique", school: "Université Polytechnique Hauts-de-France", location: "Maubeuge", period: "2015 — 2017" },
+];
 
 const languages = [
   { label: "Français", level: "Langue maternelle" },
   { label: "Anglais", level: "B2 — TOEIC 825" },
-] as const;
+];
 
 export function Experience() {
   return (
     <section
       id="parcours"
-      className="py-24 lg:py-36 bg-paper border-t border-rule"
+      className="bg-surface-2 border-t border-line"
+      style={{ padding: "clamp(72px,9vw,128px) 0" }}
       aria-labelledby="parcours-heading"
     >
-      <div className="mx-auto max-w-350 w-full px-8 lg:px-14">
+      <div className="mx-auto max-w-[1200px] w-full px-5 lg:px-11">
         <AnimateOnScroll>
-          <div className="mb-14 lg:mb-18">
-            <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent">
-              Parcours
-            </span>
-            <h2
-              id="parcours-heading"
-              className="mt-5 font-display font-semibold text-ink leading-[0.9] tracking-tight"
-              style={{ fontSize: "clamp(2.5rem, 6vw, 6rem)" }}
-            >
-              Expériences
-              <br />
-              <span className="italic font-normal text-ink/30">& formation</span>
-            </h2>
-          </div>
+          <SectionLabel>Parcours</SectionLabel>
         </AnimateOnScroll>
 
-        {/* Experiences */}
-        <div className="mb-16 lg:mb-20">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-ink/35 mb-8">
-            Expériences professionnelles
-          </p>
-          <div className="space-y-0 divide-y divide-rule">
-            {experiences.map((exp, i) => (
-              <AnimateOnScroll key={exp.company} delay={i * 70}>
-                <div className="py-8 grid lg:grid-cols-[200px_1fr] gap-5 lg:gap-12">
-                  {/* Left: meta */}
-                  <div className="shrink-0">
-                    <p className="text-[10px] font-semibold uppercase tracking-wider text-ink/30 mb-2">
-                      {exp.period}
-                    </p>
-                    <p className="font-display font-semibold text-ink text-xl leading-tight">
-                      {exp.company}
-                    </p>
-                    <p className="mt-1 text-[11px] text-muted uppercase tracking-wider">
-                      {exp.location}
-                    </p>
-                  </div>
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "clamp(40px,6vw,80px)",
+            marginTop: "44px",
+          }}
+        >
+          {/* Left: Experiences */}
+          <AnimateOnScroll>
+            <div style={{ flex: "1 1 480px" }}>
+              <div
+                className="font-mono text-faint"
+                style={{ fontSize: "11.5px", letterSpacing: ".1em", textTransform: "uppercase", marginBottom: "6px" }}
+              >
+                Expériences
+              </div>
 
-                  {/* Right: role + achievements */}
+              {experiences.map((exp, i) => (
+                <div
+                  key={exp.company}
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "120px 1fr",
+                    gap: "20px",
+                    padding: "22px 0",
+                    borderTop: `1px solid ${i === 0 ? "var(--line-strong)" : "var(--line)"}`,
+                    borderBottom: i === experiences.length - 1 ? "1px solid var(--line)" : undefined,
+                  }}
+                >
+                  <div
+                    className="font-mono text-faint"
+                    style={{ fontSize: "11.5px", lineHeight: 1.6 }}
+                  >
+                    {exp.period}<br />{exp.location}
+                  </div>
                   <div>
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-accent mb-4">
-                      {exp.role}
-                    </p>
-                    <ul className="space-y-2.5 mb-5">
-                      {exp.achievements.map((item, j) => (
-                        <li key={j} className="flex items-start gap-3">
-                          <span
-                            className="mt-1.5 shrink-0 w-1 h-1 rounded-full bg-ink/30"
-                            aria-hidden="true"
-                          />
-                          <span className="text-sm text-ink/65 leading-snug">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <ul className="flex flex-wrap gap-2" aria-label="Technologies">
-                      {exp.tags.map((tag) => (
-                        <li
-                          key={tag}
-                          className="text-[9px] font-semibold uppercase tracking-wider text-ink/40 border border-rule px-2.5 py-1"
-                        >
-                          {tag}
-                        </li>
-                      ))}
-                    </ul>
+                    <div className="font-semibold text-ink" style={{ fontSize: "17px" }}>{exp.company}</div>
+                    <div className="text-muted" style={{ marginTop: "3px", fontSize: "14px" }}>{exp.role}</div>
                   </div>
                 </div>
-              </AnimateOnScroll>
-            ))}
-          </div>
-        </div>
+              ))}
+            </div>
+          </AnimateOnScroll>
 
-        {/* Education */}
-        <div className="mb-14 pt-12 border-t border-rule">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-ink/35 mb-8">
-            Formation
-          </p>
-          <div className="space-y-0 divide-y divide-rule">
-            {education.map((edu) => (
+          {/* Right: Formation + Languages */}
+          <AnimateOnScroll delay={100}>
+            <div style={{ flex: "1 1 320px" }}>
               <div
-                key={edu.degree}
-                className="py-6 flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2"
+                className="font-mono text-faint"
+                style={{ fontSize: "11.5px", letterSpacing: ".1em", textTransform: "uppercase", marginBottom: "6px" }}
+              >
+                Formation
+              </div>
+
+              {education.map((edu, i) => (
+                <div
+                  key={edu.degree}
+                  style={{
+                    padding: "20px 0",
+                    borderTop: `1px solid ${i === 0 ? "var(--line-strong)" : "var(--line)"}`,
+                  }}
+                >
+                  <div className="font-semibold text-ink" style={{ fontSize: "16px" }}>{edu.degree}</div>
+                  <div className="text-muted" style={{ marginTop: "4px", fontSize: "14px" }}>
+                    {edu.school} · {edu.location}
+                  </div>
+                  <div className="font-mono text-faint" style={{ marginTop: "4px", fontSize: "11.5px" }}>{edu.period}</div>
+                </div>
+              ))}
+
+              <div
+                style={{
+                  marginTop: "14px",
+                  padding: "20px 0",
+                  borderTop: "1px solid var(--line)",
+                  borderBottom: "1px solid var(--line)",
+                  display: "flex",
+                  gap: "32px",
+                  flexWrap: "wrap",
+                }}
               >
                 <div>
-                  <h3 className="font-display font-semibold text-ink text-xl leading-tight">
-                    {edu.degree}
-                  </h3>
-                  <p className="mt-1 text-sm text-muted">
-                    {edu.school}, {edu.location}
-                  </p>
+                  <div
+                    className="font-mono text-faint"
+                    style={{ fontSize: "11.5px", letterSpacing: ".1em", textTransform: "uppercase", marginBottom: "8px" }}
+                  >
+                    Langues
+                  </div>
+                  <div className="text-ink" style={{ fontSize: "15px" }}>Français — maternel</div>
+                  <div className="text-ink" style={{ fontSize: "15px", marginTop: "5px" }}>Anglais — B2 (TOEIC 825)</div>
                 </div>
-                <p className="text-[10px] font-semibold uppercase tracking-wider text-ink/35 shrink-0">
-                  {edu.period}
-                </p>
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Languages */}
-        <div className="pt-10 border-t border-rule">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-ink/35 mb-6">
-            Langues
-          </p>
-          <div className="flex flex-wrap gap-8">
-            {languages.map((lang) => (
-              <div key={lang.label}>
-                <p className="font-display font-semibold text-ink text-lg">{lang.label}</p>
-                <p className="text-[11px] text-muted uppercase tracking-wider mt-0.5">{lang.level}</p>
-              </div>
-            ))}
-          </div>
+            </div>
+          </AnimateOnScroll>
         </div>
       </div>
     </section>

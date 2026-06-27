@@ -2,35 +2,39 @@ import { site } from "@/content/site";
 
 export function Footer() {
   return (
-    <footer className="bg-ink border-t border-paper/5">
-      <div className="mx-auto max-w-350 px-8 lg:px-14 py-7 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p className="text-[10px] font-semibold uppercase tracking-widest text-paper/20">
-          &copy; {new Date().getFullYear()} Serigne Saliou SENE. Tous droits réservés.
-        </p>
-        <nav aria-label="Liens réseaux sociaux" className="flex items-center gap-6">
-          <a
-            href={site.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[10px] font-semibold uppercase tracking-widest text-paper/25 hover:text-paper/60 transition-colors"
+    <footer className="border-t border-line bg-bg" style={{ padding: "36px 0" }}>
+      <div
+        className="mx-auto max-w-[1200px] px-5 lg:px-11"
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "16px",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        <div className="flex items-center gap-3">
+          <span
+            className="bg-accent text-on-accent font-display"
+            style={{
+              width: "28px",
+              height: "28px",
+              borderRadius: "7px",
+              display: "grid",
+              placeItems: "center",
+              fontSize: "15px",
+            }}
           >
-            LinkedIn
-          </a>
-          <a
-            href={site.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[10px] font-semibold uppercase tracking-widest text-paper/25 hover:text-paper/60 transition-colors"
-          >
-            GitHub
-          </a>
-          <a
-            href={`mailto:${site.email}`}
-            className="text-[10px] font-semibold uppercase tracking-widest text-paper/25 hover:text-paper/60 transition-colors"
-          >
-            Email
-          </a>
-        </nav>
+            S
+          </span>
+          <span className="text-muted" style={{ fontSize: "13.5px" }}>
+            Serigne Saliou Sene — Ingénieur Backend &amp; APIs
+          </span>
+        </div>
+
+        <div className="font-mono text-faint" style={{ fontSize: "11.5px" }}>
+          &copy; {new Date().getFullYear()} · {site.location.split("/")[0].trim()}, France
+        </div>
       </div>
     </footer>
   );

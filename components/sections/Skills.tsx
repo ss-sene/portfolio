@@ -1,54 +1,61 @@
 import { skillGroups } from "@/content/skills";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
+import { SectionLabel } from "@/components/ui/SectionLabel";
 
 export function Skills() {
   return (
     <section
       id="stack"
-      className="py-24 lg:py-36 bg-canvas border-t border-rule"
+      className="bg-bg border-t border-line"
+      style={{ padding: "clamp(72px,9vw,128px) 0" }}
       aria-labelledby="stack-heading"
     >
-      <div className="mx-auto max-w-350 w-full px-8 lg:px-14">
+      <div className="mx-auto max-w-[1200px] w-full px-5 lg:px-11">
         <AnimateOnScroll>
-          <div className="mb-14 lg:mb-18 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
-            <div>
-              <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent">
-                Stack & compétences
-              </span>
-              <h2
-                id="stack-heading"
-                className="mt-5 font-display font-semibold text-ink leading-[0.9] tracking-tight"
-                style={{ fontSize: "clamp(2.5rem, 5vw, 5rem)" }}
-              >
-                Technologies
-                <br />
-                <span className="italic font-normal text-ink/30">et méthodes</span>
-              </h2>
-            </div>
-          </div>
+          <SectionLabel>Stack &amp; compétences</SectionLabel>
         </AnimateOnScroll>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {skillGroups.map((group, i) => (
-            <AnimateOnScroll key={group.title} delay={i * 80}>
-              <div className="bg-paper border border-rule p-7 h-full hover:border-ink/20 transition-colors duration-300">
-                <h3 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent mb-6">
+        <AnimateOnScroll delay={80}>
+          <div
+            className="mt-11"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit,minmax(216px,1fr))",
+              gap: "1px",
+              background: "var(--line)",
+              border: "1px solid var(--line)",
+              borderRadius: "14px",
+              overflow: "hidden",
+            }}
+          >
+            {skillGroups.map((group) => (
+              <div
+                key={group.title}
+                className="bg-surface"
+                style={{ padding: "28px 26px" }}
+              >
+                <h3
+                  className="font-mono text-ink"
+                  style={{
+                    margin: "0 0 18px",
+                    fontSize: "13px",
+                    letterSpacing: ".06em",
+                    textTransform: "uppercase",
+                  }}
+                >
                   {group.title}
                 </h3>
-                <ul className="flex flex-wrap gap-2">
+                <div className="flex flex-col" style={{ gap: "11px" }}>
                   {group.items.map((item) => (
-                    <li
-                      key={item}
-                      className="text-[11px] font-medium text-ink/70 bg-surface border border-rule/80 px-3 py-1.5 leading-none"
-                    >
+                    <span key={item} className="text-muted" style={{ fontSize: "14.5px" }}>
                       {item}
-                    </li>
+                    </span>
                   ))}
-                </ul>
+                </div>
               </div>
-            </AnimateOnScroll>
-          ))}
-        </div>
+            ))}
+          </div>
+        </AnimateOnScroll>
       </div>
     </section>
   );
