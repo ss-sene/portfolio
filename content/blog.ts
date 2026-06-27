@@ -10,6 +10,7 @@ export type BlogPost = {
   excerpt: string;
   date: string;
   isoDate: string;
+  updatedAt?: string;
   readingTime: string;
   slug: string;
   tags: string[];
@@ -28,6 +29,10 @@ export const blogPosts: BlogPost[] = [
     slug: "reconversion-dev-ia-ai-engineer-2026",
     tags: ["IA", "Carrière", "Roadmap"],
     content: [
+      {
+        type: "p",
+        text: "Cet article est écrit du point de vue d'un développeur backend Symfony. Pas d'un data scientist, pas d'un ML researcher — d'un dev qui conçoit des APIs REST, optimise des requêtes PostgreSQL et industrialise des pipelines CI/CD. Ce contexte change beaucoup la façon de lire le marché IA et la façon d'y entrer.",
+      },
       {
         type: "p",
         text: "En 2026, le développement logiciel reste demandé, mais le marché est devenu plus sélectif. Les entreprises ciblent davantage des profils capables de gérer cloud, data et IA embarquée que des \"développeurs web généralistes\". France Travail estime qu'en 2024, environ 77 800 projets de recrutement concernaient le numérique, avec plus de 424 000 offres publiées sur francetravail.fr sur les trois premiers trimestres, mais 85 % des recrutements étaient jugés \"difficiles\" par les employeurs (France Travail, 2025).",
@@ -207,6 +212,215 @@ export const blogPosts: BlogPost[] = [
       {
         type: "p",
         text: "Pour entrer dans le niveau \"AI Engineer confirmé\" : trois projets bien documentés dont au moins un proche de conditions réelles (auth, logs, monitoring basique), une certification ou une contribution équivalente, et la capacité à raconter de A à Z un système IA conçu de bout en bout, du contexte métier jusqu'aux limites.",
+      },
+    ],
+  },
+  {
+    title: "Authentification JWT dans une API Symfony avec API Platform : mise en place et sécurité",
+    excerpt:
+      "Retour d'expérience sur la mise en place d'une authentification JWT dans une API Symfony 7 avec API Platform : configuration LexikJWT, gestion des tokens, RBAC et erreurs courantes à éviter en production.",
+    date: "20 juin 2026",
+    isoDate: "2026-06-20",
+    readingTime: "9 min",
+    slug: "authentification-jwt-symfony-api-platform",
+    tags: ["Symfony", "JWT", "Sécurité"],
+    content: [
+      {
+        type: "p",
+        text: "Sur le projet Kilifa, on avait besoin d'une authentification robuste pour une API documentaire exposée à plusieurs types d'utilisateurs avec des droits différents. On a choisi JWT avec LexikJWTAuthenticationBundle et une gestion RBAC côté API Platform. Voilà ce qu'on a mis en place, et surtout ce qu'on a évité.",
+      },
+      {
+        type: "h2",
+        text: "Pourquoi JWT plutôt que les sessions",
+      },
+      {
+        type: "p",
+        text: "Une API REST est sans état par définition. Les sessions côté serveur cassent ce principe : elles introduisent un état côté backend, compliquent le passage à l'échelle et posent des problèmes dès qu'on a plusieurs instances. JWT résout ça proprement — le token porte lui-même les informations nécessaires et le serveur n'a rien à stocker.",
+      },
+      {
+        type: "p",
+        text: "Ce n'est pas une solution universelle. JWT a ses contraintes : révocation non triviale, taille du payload qui influe sur chaque requête, clé secrète à protéger. Sur une API avec des sessions longues et un besoin de révocation immédiate, des alternatives existent. Pour notre cas — API consommée par des clients front et mobiles, sessions courtes, déploiement Docker — JWT était le bon choix.",
+      },
+      {
+        type: "h2",
+        text: "Installation et configuration LexikJWT",
+      },
+      {
+        type: "p",
+        text: "L'installation commence par le bundle et la génération des clés RSA. On évite les clés symétriques (HMAC) en production : une fuite de la clé secrète permet de signer n'importe quel token.",
+      },
+      {
+        type: "code",
+        lang: "bash",
+        lines: [
+          "composer require lexik/jwt-authentication-bundle",
+          "",
+          "# Générer les clés RSA (asymétrique — recommandé)",
+          "php bin/console lexik:jwt:generate-keypair",
+          "# Crée config/jwt/private.pem et config/jwt/public.pem",
+        ],
+      },
+      {
+        type: "p",
+        text: "La configuration dans lexik_jwt_authentication.yaml :",
+      },
+      {
+        type: "code",
+        lang: "yaml",
+        lines: [
+          "lexik_jwt_authentication:",
+          "    secret_key: '%env(resolve:JWT_SECRET_KEY)%'",
+          "    public_key: '%env(resolve:JWT_PUBLIC_KEY)%'",
+          "    pass_phrase: '%env(JWT_PASSPHRASE)%'",
+          "    token_ttl: 3600  # 1 heure — adapter selon le besoin",
+        ],
+      },
+      {
+        type: "p",
+        text: "Les chemins des clés et la passphrase viennent des variables d'environnement. Les fichiers .pem ne doivent jamais être versionnés — on les injecte via les secrets CI/CD ou un vault.",
+      },
+      {
+        type: "h2",
+        text: "Sécuriser le firewall Symfony",
+      },
+      {
+        type: "p",
+        text: "Le point d'entrée de l'authentification est un endpoint /api/login qui reçoit les credentials et retourne le token. Il faut le déclarer comme route publique et configurer le guard JWT sur les routes protégées.",
+      },
+      {
+        type: "code",
+        lang: "yaml",
+        lines: [
+          "# config/packages/security.yaml",
+          "security:",
+          "    firewalls:",
+          "        login:",
+          "            pattern: ^/api/login",
+          "            stateless: true",
+          "            json_login:",
+          "                check_path: /api/login",
+          "                username_path: email",
+          "                password_path: password",
+          "                success_handler: lexik_jwt_authentication.handler.authentication_success",
+          "                failure_handler: lexik_jwt_authentication.handler.authentication_failure",
+          "",
+          "        api:",
+          "            pattern: ^/api",
+          "            stateless: true",
+          "            jwt: ~",
+          "",
+          "    access_control:",
+          "        - { path: ^/api/login, roles: PUBLIC_ACCESS }",
+          "        - { path: ^/api/docs, roles: PUBLIC_ACCESS }",
+          "        - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }",
+        ],
+      },
+      {
+        type: "p",
+        text: "Le stateless: true est essentiel — il désactive la session Symfony sur ce firewall. Sans ça, Symfony essaie de persister la session même sur une API REST.",
+      },
+      {
+        type: "h2",
+        text: "RBAC avec API Platform",
+      },
+      {
+        type: "p",
+        text: "Sur Kilifa, on avait trois rôles : ROLE_USER (lecture seule), ROLE_MANAGER (lecture et écriture), ROLE_ADMIN (tout). API Platform permet de définir les accès directement dans l'attribut #[ApiResource] via security.",
+      },
+      {
+        type: "code",
+        lang: "php",
+        lines: [
+          "#[ApiResource(",
+          "    operations: [",
+          "        new GetCollection(security: 'is_granted(\"ROLE_USER\")'),",
+          "        new Get(security: 'is_granted(\"ROLE_USER\")'),",
+          "        new Post(security: 'is_granted(\"ROLE_MANAGER\")'),",
+          "        new Put(",
+          "            security: 'is_granted(\"ROLE_MANAGER\") and object.getOwner() == user',",
+          "        ),",
+          "        new Delete(security: 'is_granted(\"ROLE_ADMIN\")'),",
+          "    ]",
+          ")]",
+          "class Document",
+          "{",
+          "    // ...",
+          "}",
+        ],
+      },
+      {
+        type: "p",
+        text: "Le security sur Put combine le rôle ET la propriété de la ressource. C'est l'approche la plus granulaire — on évite de tout centraliser dans un voter si la logique reste simple.",
+      },
+      {
+        type: "p",
+        text: "Pour les cas plus complexes (droits dépendant du contexte métier, de l'état de la ressource), on bascule vers des Voters Symfony dédiés. L'attribut security peut appeler is_granted() avec n'importe quel voter.",
+      },
+      {
+        type: "h2",
+        text: "Ajouter des données au token JWT",
+      },
+      {
+        type: "p",
+        text: "Par défaut, le token contient uniquement le username. Pour éviter des appels base de données à chaque requête pour récupérer les rôles ou l'ID utilisateur, on enrichit le payload via un event listener.",
+      },
+      {
+        type: "code",
+        lang: "php",
+        lines: [
+          "// src/EventListener/JWTCreatedListener.php",
+          "class JWTCreatedListener",
+          "{",
+          "    public function onJWTCreated(JWTCreatedEvent $event): void",
+          "    {",
+          "        $user = $event->getUser();",
+          "        $payload = $event->getData();",
+          "",
+          "        $payload['id'] = $user->getId();",
+          "        $payload['roles'] = $user->getRoles();",
+          "",
+          "        $event->setData($payload);",
+          "    }",
+          "}",
+        ],
+      },
+      {
+        type: "p",
+        text: "Attention à ce qu'on met dans le payload : il est signé mais pas chiffré. Tout ce qui est dans le token est lisible par le client. On n'y met jamais de données sensibles (mot de passe hashé, informations personnelles).",
+      },
+      {
+        type: "h2",
+        text: "Refresh token et révocation",
+      },
+      {
+        type: "p",
+        text: "Un token JWT expiré force l'utilisateur à se reconnecter. Pour éviter ça sans allonger le TTL (ce qui augmente le risque en cas de fuite), on ajoute un refresh token avec gsprojekt/jwt-refresh-token-bundle.",
+      },
+      {
+        type: "p",
+        text: "Le flux est simple : le client reçoit un access token (TTL court, 1h) et un refresh token (TTL long, 30 jours, stocké en base). Quand l'access token expire, le client échange le refresh token contre un nouvel access token sans passer par /login.",
+      },
+      {
+        type: "p",
+        text: "La révocation reste le point faible de JWT. Si un access token est volé et n'a pas encore expiré, on ne peut pas l'invalider sans maintenir une blacklist côté serveur — ce qui réintroduit de l'état. Notre compromis : TTL court (1h) pour limiter la fenêtre d'exposition, révocation du refresh token en base en cas de déconnexion explicite.",
+      },
+      {
+        type: "h2",
+        text: "Erreurs courantes en production",
+      },
+      {
+        type: "ul",
+        items: [
+          "Clés RSA versionnées dans le dépôt : les injecter via les secrets CI/CD ou un vault, jamais dans le code.",
+          "TTL trop long : un token valable 24h ou plus est un risque. 1h avec refresh token est un bon équilibre.",
+          "Pas de validation de l'audience (aud) : si l'API est consommée par plusieurs clients, valider que le token est bien destiné à ce service.",
+          "Erreurs 401 opaques : configurer un entry_point clair qui retourne du JSON, pas une page HTML, pour ne pas bloquer les clients API.",
+          "Oublier stateless: true : Symfony crée silencieusement une session, ce qui masque les problèmes et casse les déploiements multi-instances.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Sur Kilifa, l'authentification JWT a tenu sans incident sur toute la durée du projet. Le principal travail a été la configuration initiale et la mise en place des tests d'intégration sur les endpoints protégés — pas le JWT lui-même, qui reste simple à opérer une fois bien configuré.",
       },
     ],
   },

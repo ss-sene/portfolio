@@ -1,35 +1,39 @@
-# Serigne Saliou SENE
+# Serigne Saliou SENE — Ingénieur Backend PHP/Symfony
 
-> Développeur backend PHP/Symfony avec 4 ans d'expérience, basé à Sarcelles
-> (Île-de-France), disponible immédiatement pour un CDI ou une mission freelance.
+Développeur backend PHP/Symfony avec 4 ans d'expérience, basé à Sarcelles (Île-de-France).
+Disponible pour CDI et missions backend, API, performance, refonte technique, en Île-de-France et en France.
 
-Serigne Saliou SENE est développeur backend spécialisé PHP 8 et Symfony. Il conçoit
-des API REST robustes, optimise les performances SQL et met en place des pipelines
-CI/CD GitLab. Diplômé d'un Master Ingénierie Web (ESGI Paris, 2021) et d'un DUT
-Informatique (Université Polytechnique Hauts-de-France, 2017).
+## Services proposés
 
-## Compétences principales
+- Audit performance & fiabilité backend : analyse des points de fragilité, temps de réponse, structure des requêtes SQL, risques de production, dette technique prioritaire.
+- Refonte ou assainissement d'API / legacy Symfony ou Drupal : stabilisation, clarification de l'architecture, réduction des régressions, sécurisation des endpoints.
+- Industrialisation delivery & qualité : CI/CD GitLab, Docker, tests automatisés, quality gates, revues de code, déploiements plus sûrs.
 
-- Backend : PHP 8, Symfony, API Platform, API REST/JSON, Drupal
-- Bases de données : MySQL, PostgreSQL, optimisation SQL
-- Qualité : PHPUnit, PHPStan, Psalm, TDD/BDD, SOLID, Clean Code
-- DevOps : Docker, GitLab CI/CD, Git, SonarQube
-- Méthodes : Agile, Scrum, code review, documentation technique
+## Expertise technique
+
+- PHP 8, Symfony 7, API Platform, Drupal
+- PostgreSQL, MySQL, optimisation SQL et indexation
+- GitLab CI/CD, Docker, PHPUnit, PHPStan, SonarQube
+- Architecture API REST, JWT, RBAC, sécurité API
+- TDD/BDD, SOLID, Clean Code, refactoring ciblé
 
 ## Expériences professionnelles
 
-**Link Mobility** — Développeur Fullstack (oct. 2023–nov. 2025, Riorges)
-Conception d'un backend résilient pour une API RCS en PHP/Symfony. Automatisation
-CI/CD GitLab avec réduction du temps de build de 30 %. Stack : PHP 8, Symfony,
-API REST, GitLab CI/CD, Docker.
+**Kilifa Consulting** — Développeur Backend (2024–2026, Colombes)
+Conception d'une plateforme documentaire backend-first. Symfony 7, API Platform, PostgreSQL,
+authentification JWT/RBAC, CI/CD GitLab complet avec PHPUnit, PHPStan et quality gate.
 
-**Randstad Digital** — Développeur PHP/Drupal (fév. 2022–sept. 2023, Lyon)
-Optimisation de l'architecture backend Drupal et des requêtes SQL. Réduction de
-20 % de la latence des services critiques. Stack : PHP, Drupal, MySQL, GitLab CI/CD.
+**Link Mobility** — Développeur Fullstack (2023–2024, Riorges)
+Backend Symfony pour API RCS haute volumétrie. Optimisation CI/CD, refactoring legacy,
+tests automatisés. Réduction nette des régressions en production.
 
-**IAD Territoire Digital** — Développeur d'application (nov. 2018–sept. 2021, Besançon)
-Montée de la couverture de tests de 20 % à 80 % via PHPUnit. Supervision technique
-de 2 développeurs juniors. Stack : PHP, Symfony, PHPUnit, SuiteCRM, MySQL.
+**Randstad Digital** — Développeur PHP/Drupal (2022–2023, Lyon)
+Optimisation backend Drupal et SQL. Réduction de 20 % de la latence des services critiques.
+Industrialisation CI/CD et standardisation en composants réutilisables.
+
+**IAD Territoire Digital** — Développeur d'application (2018–2021, Besançon)
+Couverture PHPUnit de 20 % à 80 % sur une application Symfony legacy.
+Supervision technique d'une mini-équipe de 2 développeurs juniors.
 
 ## Formation
 
@@ -37,10 +41,15 @@ de 2 développeurs juniors. Stack : PHP, Symfony, PHPUnit, SuiteCRM, MySQL.
 - Bachelor Ingénierie Web — ESGI, Paris (2018–2019)
 - DUT Informatique — Université Polytechnique Hauts-de-France, Maubeuge (2015–2017)
 
-## Contact et liens
+## Disponibilité
 
-- Email : serignesaliou.sene@outlook.fr
-- LinkedIn : https://www.linkedin.com/in/serignesaliousene
-- GitHub : https://github.com/ss-sene
-- Localisation : Sarcelles / Île-de-France
-- CV : https://serigne-saliou-sene.vercel.app/cv/cv-serigne-saliou-sene.pdf
+Disponible pour missions backend, API, performance, qualité et refonte technique.
+Localisation : Sarcelles, France. Mobilité : France.
+
+## Contact
+
+Email : serignesaliou.sene@outlook.fr
+LinkedIn : https://www.linkedin.com/in/serignesaliousene
+GitHub : https://github.com/ss-sene
+Site : https://serigne-saliou-sene.vercel.app
+CV : https://serigne-saliou-sene.vercel.app/cv/cv-serigne-saliou-sene.pdf

@@ -48,6 +48,7 @@ export function buildMetadata(override: Partial<Metadata> = {}): Metadata {
     },
     alternates: {
       canonical,
+      languages: { fr: canonical },
       ...altOverride,
     },
     robots: {

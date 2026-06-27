@@ -1,13 +1,5 @@
 import { site } from "@/content/site";
-
-function safeJsonStringify(value: unknown): string {
-  return JSON.stringify(value)
-    .replace(/</g, "\\u003c")
-    .replace(/>/g, "\\u003e")
-    .replace(/&/g, "\\u0026")
-    .replace(new RegExp("\u2028", "g"), "\\u2028")
-    .replace(new RegExp("\u2029", "g"), "\\u2029");
-}
+import { safeJsonStringify } from "@/lib/json-ld";
 
 // Update this date whenever you make meaningful content changes.
 const SITE_LAST_MODIFIED = "2026-06-03";
@@ -110,6 +102,33 @@ export function JsonLd() {
             },
           },
         ],
+      },
+      {
+        "@type": "Service",
+        "@id": `${base}/#service-audit`,
+        name: "Audit performance & fiabilité backend",
+        description: "Analyse des points de fragilité d'un backend existant : temps de réponse, structure des requêtes, indexation, cohérence de l'architecture, risques de production et dette technique prioritaire.",
+        provider: { "@id": `${base}/#person` },
+        areaServed: { "@type": "AdministrativeArea", "name": "France" },
+        serviceType: "Audit technique",
+      },
+      {
+        "@type": "Service",
+        "@id": `${base}/#service-refonte`,
+        name: "Refonte ou assainissement d'API / legacy Symfony ou Drupal",
+        description: "Reprise d'un backend difficile à maintenir, stabilisation d'un existant, amélioration de la structure du code, clarification des responsabilités, sécurisation des endpoints et réduction des régressions.",
+        provider: { "@id": `${base}/#person` },
+        areaServed: { "@type": "AdministrativeArea", "name": "France" },
+        serviceType: "Développement backend",
+      },
+      {
+        "@type": "Service",
+        "@id": `${base}/#service-cicd`,
+        name: "Industrialisation delivery & qualité",
+        description: "Mise en place ou amélioration d'une chaîne de livraison fiable avec GitLab CI/CD, Docker, quality gates, tests automatisés, revues de code et bonnes pratiques de déploiement.",
+        provider: { "@id": `${base}/#person` },
+        areaServed: { "@type": "AdministrativeArea", "name": "France" },
+        serviceType: "DevOps & CI/CD",
       },
     ],
   };

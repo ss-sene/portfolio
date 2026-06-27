@@ -1,6 +1,6 @@
 export const site = {
   name: "Serigne Saliou SENE",
-  title: "Ingénieur Backend & APIs — Symfony · API Platform · Drupal",
+  title: "Développeur Backend Symfony · Île-de-France",
   description:
     "Ingénieur Backend spécialisé Symfony, API Platform et Drupal. Expertise en performance, qualité logicielle, sécurité API et industrialisation CI/CD. Disponible pour missions backend en France.",
   url: "https://serigne-saliou-sene.vercel.app",

@@ -3,8 +3,8 @@ import { notFound } from "next/navigation";
 import { blogPosts } from "@/content/blog";
 import { site } from "@/content/site";
 import { buildMetadata } from "@/lib/seo";
+import { safeJsonStringify } from "@/lib/json-ld";
 import { ArticleContent } from "@/components/blog/ArticleContent";
-import { Container } from "@/components/ui/Container";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -37,7 +37,7 @@ function blogPostingSchema(post: (typeof blogPosts)[number]) {
     headline: post.title,
     description: post.excerpt,
     datePublished: post.isoDate,
-    dateModified: post.isoDate,
+    dateModified: post.updatedAt ?? post.isoDate,
     url: `${site.url}/blog/${post.slug}`,
     keywords: post.tags.join(", "),
     author: {
@@ -64,27 +64,35 @@ export default async function ArticlePage({ params }: Props) {
   if (!post) notFound();
 
   return (
-    <main className="min-h-screen bg-paper pt-28 pb-24">
+    <main className="min-h-screen bg-bg pb-24">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(blogPostingSchema(post)),
-        }}
+        dangerouslySetInnerHTML={{ __html: safeJsonStringify(blogPostingSchema(post)) }}
       />
-      <Container>
-        <div className="max-w-2xl">
+
+      {/* Cover */}
+      <div
+        className="border-b border-line"
+        style={{ padding: "clamp(48px,7vw,96px) 0 clamp(36px,5vw,64px)" }}
+      >
+        <div className="mx-auto max-w-[860px] w-full px-5 lg:px-11">
           <a
             href="/blog"
-            className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-ink/40 hover:text-accent transition-colors mb-12"
+            className="inline-flex items-center gap-2 text-faint hover:text-accent transition-colors"
+            style={{ fontSize: "13px", fontWeight: 500, textDecoration: "none", marginBottom: "32px", display: "inline-flex" }}
           >
-            &larr; Blog
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M19 12H5M12 5l-7 7 7 7" />
+            </svg>
+            Blog
           </a>
 
-          <div className="flex flex-wrap gap-3 mb-6">
+          <div className="flex flex-wrap gap-2 mb-5">
             {post.tags.map((tag) => (
               <span
                 key={tag}
-                className="text-xs font-semibold text-accent uppercase tracking-wider"
+                className="font-mono text-accent bg-accent-tint"
+                style={{ fontSize: "11px", letterSpacing: ".08em", textTransform: "uppercase", padding: "4px 9px", borderRadius: "5px" }}
               >
                 {tag}
               </span>
@@ -92,62 +100,85 @@ export default async function ArticlePage({ params }: Props) {
           </div>
 
           <h1
-            className="font-condensed font-bold text-ink uppercase leading-[0.88] tracking-tight mb-8"
-            style={{ fontSize: "clamp(2.2rem, 6vw, 4.5rem)" }}
+            className="font-display font-medium text-ink"
+            style={{ fontSize: "clamp(26px,4vw,46px)", lineHeight: 1.12, margin: 0 }}
           >
             {post.title}
           </h1>
 
-          <div className="flex items-center gap-6 pb-10 border-b border-rule mb-10">
-            <span className="text-xs text-muted">{post.date}</span>
-            <span className="text-xs text-muted">{post.readingTime} de lecture</span>
+          <p className="text-muted" style={{ marginTop: "18px", fontSize: "17px", lineHeight: 1.7, maxWidth: "680px" }}>
+            {post.excerpt}
+          </p>
+
+          <div className="flex items-center gap-6" style={{ marginTop: "24px" }}>
+            <span className="font-mono text-faint" style={{ fontSize: "12px" }}>{post.date}</span>
+            <span className="text-line" aria-hidden="true">·</span>
+            <span className="font-mono text-faint" style={{ fontSize: "12px" }}>{post.readingTime} de lecture</span>
           </div>
+        </div>
+      </div>
 
-          <ArticleContent blocks={post.content} />
+      {/* Article body */}
+      <div className="mx-auto max-w-[860px] w-full px-5 lg:px-11" style={{ paddingTop: "clamp(40px,6vw,72px)" }}>
+        <ArticleContent blocks={post.content} />
 
-          {/* Author bio */}
-          <div className="mt-16 pt-10 border-t border-rule">
-            <div className="flex items-start gap-5">
-              <div className="flex-1">
-                <p className="text-[10px] font-semibold uppercase tracking-widest text-ink/40 mb-2">
-                  Auteur
-                </p>
-                <p className="text-sm font-semibold text-ink">{site.name}</p>
-                <p className="mt-1 text-sm text-muted leading-relaxed">
-                  Développeur backend PHP/Symfony avec 4 ans d&rsquo;expérience. A travaillé chez Link Mobility, Randstad Digital et IAD Territoire Digital. Basé en Île-de-France, disponible pour un CDI.
-                </p>
-                <div className="mt-3 flex gap-4">
-                  <a
-                    href={site.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs font-semibold text-ink/50 hover:text-accent transition-colors uppercase tracking-widest"
-                  >
-                    LinkedIn &rarr;
-                  </a>
-                  <a
-                    href={site.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs font-semibold text-ink/50 hover:text-accent transition-colors uppercase tracking-widest"
-                  >
-                    GitHub &rarr;
-                  </a>
-                </div>
-              </div>
-            </div>
+        {/* CTA conversion */}
+        <div
+          className="bg-surface border border-line"
+          style={{ marginTop: "64px", borderRadius: "14px", padding: "clamp(24px,3vw,40px)" }}
+        >
+          <div className="font-mono text-faint" style={{ fontSize: "11px", letterSpacing: ".1em", textTransform: "uppercase", marginBottom: "12px" }}>
+            À propos de l&rsquo;auteur
           </div>
+          <p className="font-display font-medium text-ink" style={{ fontSize: "20px", margin: 0, lineHeight: 1.3 }}>
+            {site.name}
+          </p>
+          <p className="text-muted" style={{ marginTop: "10px", fontSize: "15px", lineHeight: 1.65 }}>
+            Ingénieur Backend PHP/Symfony avec 4 ans d&rsquo;expérience. A travaillé chez Kilifa Consulting, Link Mobility, Randstad Digital et IAD Territoire Digital. Basé en Île-de-France, disponible pour missions backend et CDI.
+          </p>
 
-          <div className="mt-8 pt-8 border-t border-rule">
+          <div style={{ marginTop: "24px", display: "flex", flexWrap: "wrap", gap: "12px", alignItems: "center" }}>
             <a
-              href="/blog"
-              className="text-xs font-semibold uppercase tracking-widest text-ink/40 hover:text-accent transition-colors"
+              href="/#contact"
+              className="font-semibold text-on-accent bg-accent inline-flex items-center gap-2"
+              style={{ fontSize: "14px", padding: "12px 20px", borderRadius: "8px", textDecoration: "none" }}
             >
-              &larr; Tous les articles
+              Planifier un échange
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </a>
+            <a
+              href={site.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted hover:text-ink transition-colors"
+              style={{ fontSize: "14px", textDecoration: "none" }}
+            >
+              LinkedIn →
+            </a>
+            <a
+              href={site.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted hover:text-ink transition-colors"
+              style={{ fontSize: "14px", textDecoration: "none" }}
+            >
+              GitHub →
             </a>
           </div>
         </div>
-      </Container>
+
+        <div style={{ marginTop: "32px", paddingTop: "32px", borderTop: "1px solid var(--line)" }}>
+          <a
+            href="/blog"
+            className="text-faint hover:text-accent transition-colors"
+            style={{ fontSize: "13px", textDecoration: "none" }}
+          >
+            ← Tous les articles
+          </a>
+        </div>
+      </div>
     </main>
   );
 }

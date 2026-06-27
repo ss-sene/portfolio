@@ -32,8 +32,13 @@ export function Footer() {
           </span>
         </div>
 
-        <div className="font-mono text-faint" style={{ fontSize: "11.5px" }}>
-          &copy; {new Date().getFullYear()} · {site.location.split("/")[0].trim()}, France
+        <div className="flex items-center gap-5">
+          <a href="/privacy" className="font-mono text-faint hover:text-muted transition-colors" style={{ fontSize: "11.5px", textDecoration: "none" }}>
+            Confidentialité
+          </a>
+          <span className="font-mono text-faint" style={{ fontSize: "11.5px" }}>
+            &copy; {new Date().getFullYear()} · {site.location.split("/")[0].trim()}, France
+          </span>
         </div>
       </div>
     </footer>
